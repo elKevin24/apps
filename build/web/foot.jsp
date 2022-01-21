@@ -609,7 +609,7 @@
             <div class="container-fluid">
               <div class="row gy-2">
                 <div class="col-sm-6 text-sm-start">
-                  <p class="mb-0">Your company &copy; 2017-2021</p>
+                  <p class="mb-0">EMPORNAC &copy; 2022</p>
                 </div>
                 <div class="col-sm-6 text-sm-end">
                   <p class="mb-0">Design by <a href="https://bootstrapious.com/p/admin-template" class="text-white text-decoration-none">Bootstrapious</a></p>

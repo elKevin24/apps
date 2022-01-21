@@ -55,6 +55,10 @@
     </head>
 
     <body class="text-center">
+        <%
+            session.invalidate();
+            
+            %>
 
         <main class="form-signin">
             <div class="user_card">

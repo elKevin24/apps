@@ -21,7 +21,7 @@ public class personaDAO implements Validar {
         int r=0;
         
 
-        String sql="select * from USUARIOS_WEB.USUARIOS_PORTAL_INOW where Correo=? and Clave=?";
+        String sql="select * from USUARIOS_WEB.USUARIOS_PORTAL where Correo=? and Clave=? and Estatus = 'A'";
         try{
             con=cn.getConexion();
             ps=con.prepareStatement(sql);
@@ -31,7 +31,8 @@ public class personaDAO implements Validar {
             while(rs.next()){
                 r=r+1;
                 per.setUsuario(rs.getString("Correo"));
-                per.setClave(rs.getString("Clave"));
+//                per.setClave(rs.getString("Clave"));
+                per.setId_login(rs.getString("USER_ID"));
             }
             
             ps.close();

@@ -2,7 +2,7 @@
 package controlador;
 
 public class persona {
-    int id_login;
+    String id_login;
     String usuario;
     String clave;
     
@@ -10,17 +10,17 @@ public class persona {
         
     }
         
-    public persona(int id_login, String usuario, String clave){
+    public persona(String id_login, String usuario, String clave){
         this.id_login = id_login;
         this.usuario = usuario;
         this.clave = clave;
     }
 
-    public int getId_login() {
+    public String getId_login() {
         return id_login;
     }
 
-    public void setId_login(int id_login) {
+    public void setId_login(String id_login) {
         this.id_login = id_login;
     }
 

@@ -98,15 +98,21 @@ public class BeanUsuarios {
         this.FECHA_CAMBIO = FECHA_CAMBIO;
     }
 
-    
+    public String getTIPO() {
+        return TIPO;
+    }
 
-    
-    
+    public void setTIPO(String TIPO) {
+        this.TIPO = TIPO;
+    }
 
-    
-    
-    
-    
+    public String getCATEGORIA() {
+        return CATEGORIA;
+    }
+
+    public void setCATEGORIA(String CATEGORIA) {
+        this.CATEGORIA = CATEGORIA;
+    }
 
     
 
@@ -142,6 +148,8 @@ public class BeanUsuarios {
     private String CORREO;
     private Double CAMBIO;
     private String FECHA_CAMBIO;
+    private String TIPO;
+    private String CATEGORIA;
     
     
     public BeanUsuarios() {

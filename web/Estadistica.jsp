@@ -83,78 +83,79 @@
                     </table>
                 </div>
             </div>
+        </div>
 
 
 
 
-            <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
-            <!--<script src="js/jquery-3.5.1.js" type="text/javascript"></script>-->
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
+        <!--<script src="js/jquery-3.5.1.js" type="text/javascript"></script>-->
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
-            <script type="text/javascript">
+        <script type="text/javascript">
 
 
-                var lista = new Array();
+            var lista = new Array();
 
-                <%
+            <%
                 for (int i = 0; i < lista.size(); i++) {
-                %>
-                lista.push(["<%= lista.get(i).getVIAJE_EMPORNAC()%>", "<%= lista.get(i).getMINUENDO()%>", "<%= lista.get(i).getSUSTRAENDO()%>", "<%= lista.get(i).getDIFERENCIA()%>"]);
-                <%
+            %>
+            lista.push(["<%= lista.get(i).getVIAJE_EMPORNAC()%>", "<%= lista.get(i).getMINUENDO()%>", "<%= lista.get(i).getSUSTRAENDO()%>", "<%= lista.get(i).getDIFERENCIA()%>"]);
+            <%
                 }
-                %>
+            %>
 
-                //            lista.forEach(element => console.log(element));
+            //            lista.forEach(element => console.log(element));
 
-                $(document).ready(function () {
-                    $('#example').DataTable();
-                });
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
 
-            </script>
+        </script>
 
-            <script type="text/javascript">
+        <script type="text/javascript">
 
-                for (var i = 0; i < lista.length; i++) {
-                    graf(lista[i][0], lista[i][1], lista[i][2], lista[i][3]);
+            for (var i = 0; i < lista.length; i++) {
+                graf(lista[i][0], lista[i][1], lista[i][2], lista[i][3]);
 
+            }
+            function graf(viaje, total, porcentaje, resultado) {
+                console.log(total, porcentaje, resultado);
+                var num = parseInt(porcentaje);
+                var num2 = parseInt(resultado);
+
+                google.charts.load('current', {'packages': ['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+
+                    var data = google.visualization.arrayToDataTable([
+                        ['Task', 'Hours per Day'],
+                        ['Operados', num],
+                        ['Pendientes', num2]
+                    ]);
+
+                    var options = {
+                        title: 'Contenedores: ' + total + '',
+                        legend: 'none'
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById(viaje));
+                    chart.draw(data, options);
                 }
-                function graf(viaje, total, porcentaje, resultado) {
-                    console.log(total, porcentaje, resultado);
-                    var num = parseInt(porcentaje);
-                    var num2 = parseInt(resultado);
-
-                    google.charts.load('current', {'packages': ['corechart']});
-                    google.charts.setOnLoadCallback(drawChart);
-
-                    function drawChart() {
-
-                        var data = google.visualization.arrayToDataTable([
-                            ['Task', 'Hours per Day'],
-                            ['Operados', num],
-                            ['Pendientes', num2]
-                        ]);
-
-                        var options = {
-                            title: 'Contenedores: ' + total + '',
-                            legend: 'none'
-                        };
-
-                        var chart = new google.visualization.PieChart(document.getElementById(viaje));
-                        chart.draw(data, options);
-                    }
-                }
+            }
 
 
 
 
-                function myFunction(variable) {
-                    location.href = "Estadistica_Detalle.jsp?id=" + variable + "";
+            function myFunction(variable) {
+                location.href = "Estadistica_Detalle.jsp?id=" + variable + "";
 
 
-                }
-            </script>
+            }
+        </script>
 
-            <!--JavaScript at end of body for optimized loading-->
-            <jsp:include page="foot.jsp" flush="true"></jsp:include>
+        <!--JavaScript at end of body for optimized loading-->
+        <jsp:include page="foot.jsp" flush="true"></jsp:include>

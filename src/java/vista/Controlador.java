@@ -33,9 +33,10 @@ public class Controlador extends HttpServlet {
                 
                 session.setAttribute("usuario", usuario);
                 session.setAttribute("clave", clave);
+                System.err.println("user"+p.getId_login());
                 
-                request.getSession().setAttribute("usuario", usuario);
-                request.getSession().setAttribute("clave", clave);
+                request.getSession().setAttribute("usuario", p.getId_login());
+//                request.getSession().setAttribute("clave", clave);
                 
                 
                 response.sendRedirect("menu.jsp");

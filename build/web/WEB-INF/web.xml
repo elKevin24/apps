@@ -4,9 +4,17 @@
         <servlet-name>Controlador</servlet-name>
         <servlet-class>vista.Controlador</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>Invetario</servlet-name>
         <servlet-class>vista.Invetario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Usuario</servlet-name>
+        <servlet-class>vista.Usuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletSession</servlet-name>
+        <servlet-class>vista.ServletSession</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
@@ -16,12 +24,29 @@
         <servlet-name>Invetario</servlet-name>
         <url-pattern>/Invetario</url-pattern>
     </servlet-mapping>
-   <session-config>
+    <servlet-mapping>
+        <servlet-name>Usuario</servlet-name>
+        <url-pattern>/Usuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSession</servlet-name>
+        <url-pattern>/ServletSession</url-pattern>
+    </servlet-mapping>
+    <session-config>
         <session-timeout>
-           30
+           60
         </session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>
     </welcome-file-list>
+    <!--    <security-constraint>
+    <web-resource-collection>
+        <web-resource-name>apps</web-resource-name>
+        <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+</security-constraint>-->
 </web-app>

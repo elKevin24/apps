@@ -78,7 +78,7 @@
                             <!-- Navbar Header-->
                             <div class="navbar-header">
                                 <!-- Navbar Brand --><a class="navbar-brand d-none d-sm-inline-block" href="menu.jsp">
-                                    <div class="brand-text d-none d-lg-inline-block"><span>EMPORNAC </span><strong>SANTO TOMAS</strong></div>
+                                    <div class="brand-text d-none d-lg-inline-block"><span>EMPORNAC </span><strong>EN LINEA</strong></div>
                                     <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>EMPORNAC</strong></div></a>
                                 <!-- Toggle Button--><a class="menu-btn active" id="toggle-btn" href="#"><span></span><span></span><span></span></a>
                             </div>

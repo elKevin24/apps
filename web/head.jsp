@@ -4,8 +4,7 @@
     Author     : kcordon
 --%>
 
-<%@page import="java.util.Timer"%>
-<%@page import="java.util.TimerTask"%>
+
 <%@page import="modelo.Usuario"%>
 <%@page import="controlador.BeanUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -43,39 +42,3 @@
 %>
 
 <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
-<script>
-
-//    $(document).ready(function () {
-//        var a = 0;
-//        function Session() {
-//
-//
-//            $.ajax({
-//                url: "ServletSession",
-//
-//                data: {
-//                    firma: $("#firma").val(),
-//                    usuario: $('#usuario').val(),
-//                    param: 2
-//                },
-//
-//                success: function (data) {
-//
-////                        $("#firma").val(data);
-//
-////                        document.getElementById("spinner").style.display = "none";
-//                    console.log(data);
-//
-//                },
-//                error: function (jqXHR, textStatus, errorThrown) {
-//
-////                        document.getElementById("spinner").style.display = "none";
-//                }
-//
-//            });
-////            console.log("hola" + a++);
-//        }
-//        setInterval(Session, 1000);
-//    });
-
-</script>

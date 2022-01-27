@@ -331,7 +331,7 @@ public class Estadistica {
                 + "where a.demora = b.demora\n"
                 + "AND a.tipo_demora = b.tipo_demora\n"
                 + "AND a.tipo_carga = d.codigo\n"
-                + "and a.viaje = '202100000996'";
+                + "and a.viaje = "+viaje+"";
 
         try {
             Conexion c = new Conexion();

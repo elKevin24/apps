@@ -16,6 +16,14 @@
         <servlet-name>ServletSession</servlet-name>
         <servlet-class>vista.ServletSession</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletSat</servlet-name>
+        <servlet-class>vista.ServletSat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletPass</servlet-name>
+        <servlet-class>vista.ServletPass</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>ServletSession</servlet-name>
         <url-pattern>/ServletSession</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSat</servlet-name>
+        <url-pattern>/ServletSat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPass</servlet-name>
+        <url-pattern>/ServletPass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

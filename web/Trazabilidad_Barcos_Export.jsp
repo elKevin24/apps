@@ -8,6 +8,13 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+
+    if (session.getAttribute("usuario") == null) {
+        System.out.println(session.getAttribute("usuario") == null);
+        response.sendRedirect("Login.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +30,7 @@
         <title>Listado de Barcos</title>
         <jsp:include page="head.jsp" flush="true"></jsp:include>
 
-<style>
+            <style>
                 h3{
                     text-align: center;
                 }
@@ -48,10 +55,12 @@
                         </thead>
                         <tbody>
                         <%
-
                             String usuario = String.valueOf(session.getAttribute("usuario"));
+                            BeanUsuarios user1 = new BeanUsuarios();
+                            user1 = Usuario.Usuario_Menu(usuario);
+
                             BeanUsuarios user = new BeanUsuarios();
-                            user = Usuario.ObtenerUsuario(usuario);
+                            user = Usuario.ObtenerUsuario(user1.getCORREO());
                             String codigo = user.getUSUARIO_DE_SERVICIO();
 
                             System.err.println("" + codigo);

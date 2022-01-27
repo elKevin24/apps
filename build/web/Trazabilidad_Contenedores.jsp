@@ -64,8 +64,11 @@
                     <%                                System.err.println("Viaje Barco" + id);
 
                         String usuario = String.valueOf(session.getAttribute("usuario"));
+                        BeanUsuarios user1 = new BeanUsuarios();
+                        user1 = Usuario.Usuario_Menu(usuario);
+
                         BeanUsuarios user = new BeanUsuarios();
-                        user = Usuario.ObtenerUsuario(usuario);
+                        user = Usuario.ObtenerUsuario(user1.getCORREO());
                         String codigo = user.getUSUARIO_DE_SERVICIO();
 
                         LinkedList<Trazabilidad_Contenedores> lista = TrazabilidadContenedores.consultarCont(id, codigo);
@@ -159,21 +162,21 @@
 
 
 
-                $(document).ready(function () {
-                    $('[data-toggle="tooltip"]').tooltip();
-                    $('#example').dataTable({
-                        "drawCallback": function (settings) {
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+                        $('#example').dataTable({
+                            "drawCallback": function (settings) {
 
-                            array();
-                            array_atc();
+                                array();
+                                array_atc();
 
-                            $('[data-toggle="tooltip"]').tooltip();
+                                $('[data-toggle="tooltip"]').tooltip();
 
 
-                        }, "order": [[0, "asc"]]
-                                //}
+                            }, "order": [[0, "asc"]]
+                                    //}
+                        });
                     });
-                });
 
 
     </script>

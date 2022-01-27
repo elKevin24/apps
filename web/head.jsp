@@ -14,7 +14,7 @@
 
 //    
     if (usuario == "null") {
-        System.out.println("entro al if");
+        System.out.println("entro al if del head");
         response.sendRedirect("Login.jsp");
 
     } else {
@@ -41,4 +41,4 @@
     }
 %>
 
-<script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
+

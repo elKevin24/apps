@@ -7,8 +7,17 @@
 <%@page import="controlador.BeanBarcos"%>
 <%@page import="java.util.*"%>
 
+<%
 
+    if (session.getAttribute("usuario") == null) {
+        System.out.println(session.getAttribute("usuario") == null);
+        response.sendRedirect("Login.jsp");
+    }
+%>
+
+<jsp:include page="head.jsp" flush="true"></jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -20,38 +29,46 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-       
+
         <title>Trazabilidad Empornac</title>
-        <jsp:include page="head.jsp" flush="true"></jsp:include>
+        <%--<jsp:include page="head.jsp" flush="true"></jsp:include>--%>
 
-            <style>
-                h3{
-                    text-align: center;
-                }
-            </style>
-        </head>
-        <body>
+        <style>
+            h3{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
 
 
-            <div class="container-fluid">
-                <br>
-                <h3> Listado de Buques Descarga </h3>
-                <table id="example" border="1"   class="display table table-hover table-bordered table-striped" >
-                    <thead>
-                        <tr>                            
-                            <th>NOMBRE BUQUE</th>
-                            <th>VIAJE</th>
-                            <th>FECHA</th>
-                            <th>VER</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+        <div class="container-fluid">
+            <br>
+            <h3> Listado de Buques Descarga </h3>
+            <table id="example" border="1"   class="display table table-hover table-bordered table-striped" >
+                <thead>
+                    <tr>                            
+                        <th>NOMBRE BUQUE</th>
+                        <th>VIAJE</th>
+                        <th>FECHA</th>
+                        <th>VER</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <%
-
                         String usuario = String.valueOf(session.getAttribute("usuario"));
+                        
+                        BeanUsuarios user1 = new BeanUsuarios();
+                        user1 = Usuario.Usuario_Menu(usuario);
+                        
                         BeanUsuarios user = new BeanUsuarios();
-                        user = Usuario.ObtenerUsuario(usuario);
+                        user = Usuario.ObtenerUsuario(user1.getCORREO());
                         String codigo = user.getUSUARIO_DE_SERVICIO();
+
+                        
+
+//                        BeanUsuarios user = new BeanUsuarios();
+//                        user = Usuario.ObtenerUsuario(user1.getCORREO());
 
                         System.err.println("CODIGO:  " + codigo);
 
@@ -74,18 +91,18 @@
         </div>
 
 
-    <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <!--<script src="js/jquery-3.5.1.js" type="text/javascript"></script>-->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+        <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
+        <!--<script src="js/jquery-3.5.1.js" type="text/javascript"></script>-->
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#example').DataTable( {
-        "order": [[ 2, "desc" ]]
-    });
-        });
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    "order": [[2, "desc"]]
+                });
+            });
 
-    </script>
+        </script>
 
-            <!--JavaScript at end of body for optimized loading-->
-            <jsp:include page="foot.jsp" flush="true"></jsp:include>
+        <!--JavaScript at end of body for optimized loading-->
+        <jsp:include page="foot.jsp" flush="true"></jsp:include>

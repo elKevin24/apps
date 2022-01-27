@@ -2,10 +2,12 @@ package modelo;
 
 import controlador.BeanUsuarios;
 import controlador.BeanTipoBuque;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.LinkedList;
 
 public class Usuario {
@@ -349,6 +351,33 @@ public class Usuario {
         } catch (SQLException e) {
         }
         return user;
+    }
+    
+    
+    public static String Actualizar_Contrasena_1(String id, String contrasena) {
+        String retorno = null;
+        System.out.println("id: "+ id +"contrasena: " + contrasena);
+//        USUARIOS_WEB.P_ACT_CLAVE_USUARIO(P_USERID in NUMBER, P_CLAVE in VARCHAR2, resultado in out varchar2)
+
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion(); CallableStatement cs = con.prepareCall("{call USUARIOS_WEB.P_ACT_CLAVE_USUARIO(?, ?, ?)}")) {
+
+                
+                cs.setString(1, id);
+                cs.setString(2, contrasena);
+                cs.registerOutParameter(3, Types.VARCHAR);
+                cs.execute();
+                //se recupera el resultado de la funcion pl/sql
+                retorno = cs.getString(3);
+                System.err.println("retorno: "+retorno);
+
+            }
+        } catch (SQLException e) {
+
+            System.err.println("Actualizar_Contrasena_1: " + e);
+        }
+        return retorno;
     }
 
 }

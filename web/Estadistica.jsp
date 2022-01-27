@@ -57,8 +57,11 @@
                             <%
 
                                 String usuario = String.valueOf(session.getAttribute("usuario"));
+                                BeanUsuarios user1 = new BeanUsuarios();
+                                user1 = Usuario.Usuario_Menu(usuario);
+
                                 BeanUsuarios user = new BeanUsuarios();
-                                user = Usuario.ObtenerUsuario(usuario);
+                                user = Usuario.ObtenerUsuario(user1.getCORREO());
                                 String codigo = user.getUSUARIO_DE_SERVICIO();
 
                                 System.err.println("CODIGO:  " + codigo);

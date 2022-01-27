@@ -44,12 +44,8 @@
             System.out.println("SAT");
             if (usuario == "null") {
                 System.out.println("entro al if");
-        %>
-
-        <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Login.jsp"> 
-
-        <%
-            }
+                response.sendRedirect("Login.jsp");
+            } else {
         %>
     </head>
     <body>
@@ -73,7 +69,7 @@
                             <!-- Navbar Header-->
                             <div class="navbar-header">
                                 <!-- Navbar Brand --><a class="navbar-brand d-none d-sm-inline-block" href="menu.jsp">
-                                    <div class="brand-text d-none d-lg-inline-block"><span>EMPORNAC </span><strong>SANTO TOMAS</strong></div>
+                                    <div class="brand-text d-none d-lg-inline-block"><span>EMPORNAC</span><strong>EN LINEA</strong></div>
                                     <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>EMPORNAC</strong></div></a>
                                 <!-- Toggle Button--><a class="menu-btn active" id="toggle-btn" href="#"><span></span><span></span><span></span></a>
                             </div>
@@ -116,18 +112,22 @@
                             if (user1.getTIPO().equalsIgnoreCase("1")) {
 
                         %>
-                        <li class="sidebar-item"><a class="sidebar-link" href="#Usuarios" data-bs-toggle="collapse"> 
-                                <i class="bi bi-person-plus"><svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-0">
 
-                                    </svg></i>Usuarios </a></li>
-                        <ul class="collapse list-unstyled " id="Usuarios">
-                            <li><a class="sidebar-link" href="Usuarios.jsp">Crear Usuario </a></li>
-                            <li><a class="sidebar-link" href="Usuarios_Listado_Solicitud.jsp">Listado Solicitudes</a></li>
-                        </ul>
 
 
                         <%                                        }
                         %>
+
+
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="#RX" data-bs-toggle="collapse"> 
+                                <img src="img/truck.svg" class="svg-icon svg-icon-sm svg-icon-heavy me-xl-4">
+                                Rayos X </a></li>
+                        <ul class="collapse list-unstyled " id="RX">
+                            <li><a class="sidebar-link" href="SAT_HISTORICO_RX.jsp">Consulta Listado</a></li>
+                            <li><a class="sidebar-link" href="SAT_ESTADO_RX.jsp">Consulta Estado</a></li>
+                            <!--<li><a class="sidebar-link" href="Usuarios_Listado_Solicitud.jsp">Listado Solicitudes</a></li>-->
+                        </ul>
 
                         <li class="sidebar-item"><a class="sidebar-link" href="#Inventario_Conte_Contenedores" data-bs-toggle="collapse"> 
                                 <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-4">
@@ -139,8 +139,6 @@
                             <li><a class="sidebar-link" href="Inventario_Conte_Contenedores_Historico.jsp">Reporte Historico Inventario</a></li>
                             <li><a class="sidebar-link" href="Historico_Firmas_Contenedores.jsp">Consulta Firmas Creadas</a></li>
                         </ul>
-
-
 
                     </ul><span class="text-uppercase text-gray-400 text-xs letter-spacing-0 mx-3 px-2 heading">Extras</span>
                     <ul class="list-unstyled py-4">
@@ -154,3 +152,7 @@
                 <div id="back" class="content-inner w-100">
                     <!-- Page Header-->
 
+                    <%
+                        }
+
+                    %>

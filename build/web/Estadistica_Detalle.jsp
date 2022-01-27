@@ -17,8 +17,8 @@
 <html>
     <head>
         <title>
-                Detalle Buque
-            </title>
+            Detalle Buque
+        </title>
         <jsp:include page="head.jsp" flush="true"></jsp:include>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@
                 }
 
             </style>
-            
+
 
 
         <%
@@ -84,8 +84,11 @@
                                         <%
 
                                             String usuario = String.valueOf(session.getAttribute("usuario"));
+                                            BeanUsuarios user1 = new BeanUsuarios();
+                                            user1 = Usuario.Usuario_Menu(usuario);
+
                                             BeanUsuarios user = new BeanUsuarios();
-                                            user = Usuario.ObtenerUsuario(usuario);
+                                            user = Usuario.ObtenerUsuario(user1.getCORREO());
                                             String codigo = user.getUSUARIO_DE_SERVICIO();
 
                                             int listados = 0;
@@ -266,10 +269,10 @@
                     </div>
                 </div>
             </div>
-            </div>
-            <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
+        </div>
+        <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
 
-            <script>
+        <script>
                             function descarga() {
                                 var operados = document.getElementById("operados").innerText;
                                 var pendientes = document.getElementById("pendientes").innerText;
@@ -379,5 +382,5 @@
 
                             });
 
-            </script>
-            <jsp:include page="foot.jsp" flush="true"></jsp:include>
+        </script>
+        <jsp:include page="foot.jsp" flush="true"></jsp:include>

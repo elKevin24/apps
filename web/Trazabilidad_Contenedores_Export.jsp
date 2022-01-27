@@ -64,8 +64,11 @@
                 </thead>
                 <tbody>
                     <%                                String usuario = String.valueOf(session.getAttribute("usuario"));
+                        BeanUsuarios user1 = new BeanUsuarios();
+                        user1 = Usuario.Usuario_Menu(usuario);
+
                         BeanUsuarios user = new BeanUsuarios();
-                        user = Usuario.ObtenerUsuario(usuario);
+                        user = Usuario.ObtenerUsuario(user1.getCORREO());
                         String codigo = user.getUSUARIO_DE_SERVICIO();
 
                         LinkedList<Trazabilidad_Contenedores> lista = TrazabilidadContenedores.consultarContExport(id, codigo);
@@ -163,32 +166,32 @@
             </table>
         </div>
 
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
 
 
-                $(document).ready(function () {
-                    $('[data-toggle="tooltip"]').tooltip();
-                    $('#example').dataTable({
-                        "drawCallback": function (settings) {
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+                        $('#example').dataTable({
+                            "drawCallback": function (settings) {
 
-                            array();
-                            array_atc();
+                                array();
+                                array_atc();
 
-                            $('[data-toggle="tooltip"]').tooltip();
+                                $('[data-toggle="tooltip"]').tooltip();
 
 
-                        }, "order": [[0, "asc"]]
-                                //}
+                            }, "order": [[0, "asc"]]
+                                    //}
+                        });
                     });
-                });
 
 
-    </script>
+        </script>
 
-    <!--JavaScript at end of body for optimized loading-->
+        <!--JavaScript at end of body for optimized loading-->
 
-    <jsp:include page="foot.jsp" flush="true"></jsp:include>
+        <jsp:include page="foot.jsp" flush="true"></jsp:include>

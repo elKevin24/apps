@@ -65,17 +65,18 @@ public class SAT {
     public static LinkedList<BeanRX> RX_RESULTADO_ESCANEO_CONTE(String Inicio, String Final) throws SQLException {
         LinkedList<BeanRX> tipo = new LinkedList<>();
         String sql;
+        String error = null;
 
         sql = "SELECT\n"
-                + "    \"A1\".\"PREFIJO\"          \"PREFIJO\",\n"
-                + "    \"A1\".\"IDENTIFICACION\"   \"IDENTIFICACION\",\n"
-                + "    \"A1\".\"FECHA_ESCANEO\"    \"FECHA_ESCANEO\",\n"
-                + "    decode(\"A1\".\"IMPORTEXPORT\", 'I', 'IMPORT', 'E', 'EXPORT') \"ARCO_OPERACION\"\n"
-                + "FROM\n"
-                + "    \"PUERTO\".\"RX_RESULTADO_ESCANEO_CONTE\" \"A1\"\n"
-                + "WHERE\n"
-                + "    \"A1\".\"FECHA_ESCANEO\" >= '" + Inicio + "'\n"
-                + "    AND \"A1\".\"FECHA_ESCANEO\" <= to_date('" + Final + "')+1";
+                + "                PREFIJO,\n"
+                + "                IDENTIFICACION,\n"
+                + "                FECHA_ESCANEO,\n"
+                + "                decode(IMPORTEXPORT, 'I', 'IMPORT', 'E', 'EXPORT') ARCO_OPERACION\n"
+                + "                FROM\n"
+                + "                PUERTO.RX_RESULTADO_ESCANEO_CONTE\n"
+                + "                WHERE\n"
+                + "                FECHA_ESCANEO >=   to_date('" + Inicio + "','DD-MM-YYYY')\n"
+                + "                AND FECHA_ESCANEO <= to_date('" + Final + "','DD-MM-YYYY')+1";
 
         try {
             Conexion c = new Conexion();
@@ -97,7 +98,7 @@ public class SAT {
                 st.close();
             }
         } catch (SQLException e) {
-
+            error = "RX_RESULTADO_ESCANEO_CONTE: _" + e;
             System.out.println("modelo.SAT.RX_RESULTADO_ESCANEO_CONTE()" + e);
 
         }
@@ -105,7 +106,51 @@ public class SAT {
         return tipo;
     }
 
-    public static LinkedList<BeanRX> Sala_de_Control () throws SQLException {
+    public static String RX_RESULTADO_ESCANEO_CONTE1(String Inicio, String Final) throws SQLException {
+        LinkedList<BeanRX> tipo = new LinkedList<>();
+        String sql;
+        String error = null;
+
+        sql = "SELECT\n"
+                + "                PREFIJO,\n"
+                + "                IDENTIFICACION,\n"
+                + "                FECHA_ESCANEO,\n"
+                + "                decode(IMPORTEXPORT, 'I', 'IMPORT', 'E', 'EXPORT') ARCO_OPERACION\n"
+                + "                FROM\n"
+                + "                PUERTO.RX_RESULTADO_ESCANEO_CONTE\n"
+                + "                WHERE\n"
+                + "                FECHA_ESCANEO >=   to_date('" + Inicio + "','DD-MM-YYYY')\n"
+                + "                AND FECHA_ESCANEO <= to_date('" + Final + "','DD-MM-YYYY')+1";
+
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion()) {
+                Statement st;
+                st = con.createStatement();
+
+                try (ResultSet rs = st.executeQuery(sql)) {
+                    while (rs.next()) {
+                        BeanRX user = new BeanRX();
+                        user.setPREFIJO(rs.getString("PREFIJO"));
+                        user.setIDENTIFICACION(rs.getString("IDENTIFICACION"));
+                        user.setFECHA_ESCANEO(rs.getString("FECHA_ESCANEO"));
+                        user.setIMPORTEXPORT(rs.getString("ARCO_OPERACION"));
+
+                        tipo.add(user);
+                    }
+                }
+                st.close();
+            }
+        } catch (SQLException e) {
+            error = "RX_RESULTADO_ESCANEO_CONTE: _" + e + " Inicio: " + Inicio + " Final: " + Final;
+            System.out.println("modelo.SAT.RX_RESULTADO_ESCANEO_CONTE()" + e);
+
+        }
+
+        return error;
+    }
+
+    public static LinkedList<BeanRX> Sala_de_Control() throws SQLException {
         LinkedList<BeanRX> tipo = new LinkedList<>();
         String sql;
 
@@ -141,7 +186,167 @@ public class SAT {
             }
         } catch (SQLException e) {
 
-            System.out.println("modelo.SAT.Sala_de_Control()"+e);
+            System.out.println("modelo.SAT.Sala_de_Control()" + e);
+
+        }
+
+        return tipo;
+    }
+
+    public static LinkedList<BeanRX> Ceiba() throws SQLException {
+        LinkedList<BeanRX> tipo = new LinkedList<>();
+        String sql;
+
+        sql = "SELECT c.PREFIJO||' '||c.NUMERO_DE_IDENTIFICACION contenedor, c.FECHA_HORA_RECEPCION, c.FECHA_HORA_ENTRADA,\n"
+                + "(select TU.FECHA_GRABADOR FECHA_UBICACION\n"
+                + "from PUERTO.TARJETA_COF tc, PUERTO.tarjeta_cof_ubicacion tu \n"
+                + "WHERE TC.TCF_CORRELATIVO_TARJETA = TU.TCF_CORRELATIVO_TARJETA\n"
+                + "AND TC.TCF_ESTADO_TARJETA = 'A'\n"
+                + "AND TC.TCF_MODO_CREACION_TARJETA = 'R'\n"
+                + "AND TC.TCF_PREFIJO = C.PREFIJO\n"
+                + "AND TC.TCF_IDENTIFICACION = C.NUMERO_DE_IDENTIFICACION) FECHA_UBICACION\n"
+                + "FROM PUERTO.EOPT_RECEPCION_DE_CONTENEDORES c\n"
+                + "where c.FECHA_HORA_ENTRADA is not null\n"
+                + "and c.FECHA_HORA_RECEPCION between (sysdate-3) and sysdate\n"
+                + "and not exists  \n"
+                + "    (select  *  --pasaron por bascula\n"
+                + "    from PUERTO.BASC_RECEPCION d, PUERTO.EOPT_RECEPCION_DE_CONTENEDORES e\n"
+                + "    where d.recepcion = e.AUTORIZACION_RECEPCION\n"
+                + "    and e.AUTORIZACION_RECEPCION = c.AUTORIZACION_RECEPCION\n"
+                + "    and e.FECHA_HORA_RECEPCION between (sysdate-3) and sysdate)\n"
+                + "and not exists (\n"
+                + "    select *   --pasaron resultado RX\n"
+                + "    from PUERTO.RX_RESULTADO_ESCANEO_CONTE f\n"
+                + "    where f.FECHA_INSERT between (sysdate-3) and sysdate\n"
+                + "    and F.PREFIJO = c.PREFIJO\n"
+                + "    and F.IDENTIFICACION = c.NUMERO_DE_IDENTIFICACION\n"
+                + "    ) ORDER BY c.FECHA_HORA_ENTRADA ASC";
+
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion()) {
+                Statement st;
+                st = con.createStatement();
+
+                try (ResultSet rs = st.executeQuery(sql)) {
+                    while (rs.next()) {
+                        BeanRX user = new BeanRX();
+                        user.setPREFIJO(rs.getString("contenedor"));
+                        user.setFECHA_ESCANEO(rs.getString("FECHA_HORA_RECEPCION"));
+                        user.setIMPORTEXPORT(rs.getString("FECHA_HORA_ENTRADA"));
+                        user.setIDENTIFICACION(rs.getString("FECHA_UBICACION"));
+
+                        tipo.add(user);
+                    }
+                }
+                st.close();
+            }
+        } catch (SQLException e) {
+
+            System.out.println("modelo.SAT.Ceiba()" + e);
+
+        }
+
+        return tipo;
+    }
+
+    public static LinkedList<BeanRX> Rayos_X() throws SQLException {
+        LinkedList<BeanRX> tipo = new LinkedList<>();
+        String sql;
+
+        sql = "select c.contenedor, TO_CHAR(c.FECHA_ARCO,'DD MONTH YYYY HH24:MI') fecha_consulta_manif, TO_CHAR(c.FECHA_RESULTADO,'DD MONTH YYYY HH24:MI') fecha_resultado\n"
+                + "from (\n"
+                + "select a.PREFIJO||'-'||a.IDENTIFICACION CONTENEDOR,  FECHA_ARCO,  B.FECHA_INSERT FECHA_RESULTADO\n"
+                + "from PUERTO.RX_INFO_CONTE_ESCANEO a, PUERTO.RX_RESULTADO_ESCANEO_CONTE b\n"
+                + "where (A.PREFIJO = B.PREFIJO(+)\n"
+                + "and A.IDENTIFICACION = B.IDENTIFICACION(+)\n"
+                + "and A.FECHA_RESULT_ESCANEO = B.FECHA_INSERT(+))\n"
+                + "and nvl(a.fecha_arco, B.FECHA_INSERT) between (sysdate-3) and sysdate\n"
+                + "and a.IMPORTEXPORT = 'E'\n"
+                + "union\n"
+                + "select B.PREFIJO||'-'||B.IDENTIFICACION CONTENEDOR, FECHA_ARCO, B.FECHA_INSERT FECHA_RESULTADO\n"
+                + "from PUERTO.RX_INFO_CONTE_ESCANEO a, PUERTO.RX_RESULTADO_ESCANEO_CONTE b\n"
+                + "where (A.PREFIJO(+) = B.PREFIJO\n"
+                + "and A.IDENTIFICACION(+) = B.IDENTIFICACION\n"
+                + "and A.FECHA_RESULT_ESCANEO(+) = B.FECHA_INSERT)\n"
+                + "and nvl(a.fecha_arco, B.FECHA_INSERT) between (sysdate-3) and sysdate\n"
+                + "and b.IMPORTEXPORT = 'E'\n"
+                + ") c\n"
+                + "ORDER BY nvl(c.fecha_arco, c.fecha_resultado) desc";
+
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion()) {
+                Statement st;
+                st = con.createStatement();
+
+                try (ResultSet rs = st.executeQuery(sql)) {
+                    while (rs.next()) {
+                        BeanRX user = new BeanRX();
+                        user.setPREFIJO(rs.getString("contenedor"));
+                        user.setFECHA_ESCANEO(rs.getString("fecha_consulta_manif"));
+                        user.setIMPORTEXPORT(rs.getString("fecha_resultado"));
+
+                        tipo.add(user);
+                    }
+                }
+                st.close();
+            }
+        } catch (SQLException e) {
+
+            System.out.println("modelo.SAT.Rayos_X()" + e);
+
+        }
+
+        return tipo;
+    }
+
+    public static LinkedList<BeanRX> Bascula() throws SQLException {
+        LinkedList<BeanRX> tipo = new LinkedList<>();
+        String sql;
+
+        sql = "select  e.PREFIJO||' '||e.NUMERO_DE_IDENTIFICACION contenedor, e.FECHA_HORA_RECEPCION, e.FECHA_HORA_ENTRADA, D.FECHA_PRIMERA_TRANSACCION FECHA_BASCULA,\n"
+                + "(select TU.FECHA_GRABADOR FECHA_UBICACION\n"
+                + "from PUERTO.TARJETA_COF tc, PUERTO.tarjeta_cof_ubicacion tu \n"
+                + "WHERE TC.TCF_CORRELATIVO_TARJETA = TU.TCF_CORRELATIVO_TARJETA\n"
+                + "AND TC.TCF_ESTADO_TARJETA = 'A'\n"
+                + "AND TC.TCF_MODO_CREACION_TARJETA = 'R'\n"
+                + "AND TC.TCF_PREFIJO = E.PREFIJO\n"
+                + "AND TC.TCF_IDENTIFICACION = E.NUMERO_DE_IDENTIFICACION) FECHA_UBICACION\n"
+                + "from PUERTO.BASC_RECEPCION d, PUERTO.EOPT_RECEPCION_DE_CONTENEDORES e\n"
+                + "where d.recepcion = e.AUTORIZACION_RECEPCION\n"
+                + "and e.FECHA_HORA_RECEPCION between (sysdate-3) and sysdate\n"
+                + "and not exists (\n"
+                + "    select *\n"
+                + "    from PUERTO.RX_RESULTADO_ESCANEO_CONTE f\n"
+                + "    where f.FECHA_INSERT between (sysdate-3) and sysdate\n"
+                + "    and F.PREFIJO = E.PREFIJO\n"
+                + "    and F.IDENTIFICACION = E.NUMERO_DE_IDENTIFICACION\n"
+                + "    )";
+
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion()) {
+                Statement st;
+                st = con.createStatement();
+
+                try (ResultSet rs = st.executeQuery(sql)) {
+                    while (rs.next()) {
+                        BeanRX user = new BeanRX();
+                        user.setPREFIJO(rs.getString("contenedor"));
+                        user.setFECHA_ESCANEO(rs.getString("fecha_consulta_manif"));
+                        user.setIMPORTEXPORT(rs.getString("fecha_resultado"));
+                        user.setIDENTIFICACION(rs.getString("fecha_resultado"));
+                        user.setFECHA_BASCULA(rs.getString("fecha_bascula"));
+
+                        tipo.add(user);
+                    }
+                }
+                st.close();
+            }
+        } catch (SQLException e) {
+
+            System.out.println("modelo.SAT.Rayos_X()" + e);
 
         }
 

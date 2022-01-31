@@ -35,12 +35,105 @@ public class ServletSat extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String Inicio = request.getParameter("Inicio");
+
+            if (request.getParameter("param").equalsIgnoreCase("0")) {
+                
+                LinkedList<BeanRX> lista = SAT.Sala_de_Control();
+                
+                out.println("<div class=\"table-responsive\">");
+                out.println("<table border=\"1\"   class=\"table mb-0 table-striped table-sm display\">");
+                out.println("<thead>");                
+                out.println("<tr>");
+                out.println("<th>#</th>");
+                out.println("<th>Contenedor</th>");
+                out.println("<th>Fecha Hora Recepcion</th>");
+                out.println("</tr>");
+                out.println("</thead>");
+                out.println("<tbody>");
+                for (int i = 0; i < lista.size(); i++) {
+                    out.println("<tr>");
+                    out.println("<td>" + (i + 1) + "</td>");
+                    out.println("<td>" + lista.get(i).getPREFIJO() +"</td>");
+                    out.println("<td>" + lista.get(i).getFECHA_ESCANEO() +  "</td>");
+                    out.println("</tr>");
+                }
+                out.println("</tbody>");
+                out.println("</table>");
+                out.println("</div>");
+                
+                
+            } else if (request.getParameter("param").equalsIgnoreCase("1")) {
+                
+                LinkedList<BeanRX> lista = SAT.Ceiba();
+                
+                out.println("<div class=\"table-responsive\">");
+                out.println("<table border=\"1\"   class=\"table mb-0 table-striped table-sm display\">");
+                out.println("<thead>");                
+                out.println("<tr>");
+                out.println("<th>#</th>");
+                out.println("<th>Contenedor</th>");
+                out.println("<th>Fecha Hora Recepcion</th>");
+                out.println("<th>Fecha Hora Entrada</th>");
+                out.println("<th>Fecha Ubicacion</th>");
+                out.println("</tr>");
+                out.println("</thead>");
+                out.println("<tbody>");
+                for (int i = 0; i < lista.size(); i++) {
+                    out.println("<tr>");
+                    out.println("<td>" + (i + 1) + "</td>");
+                    out.println("<td>" + lista.get(i).getPREFIJO() +"</td>");
+                    out.println("<td>" + lista.get(i).getFECHA_ESCANEO() +  "</td>");
+                    out.println("<td>" + lista.get(i).getIMPORTEXPORT() +  "</td>");
+                    out.println("<td>" + lista.get(i).getIDENTIFICACION()+  "</td>");
+                    out.println("</tr>");
+                }
+                out.println("</tbody>");
+                out.println("</table>");
+                out.println("</div>");
+                
+                
+            } else if (request.getParameter("param").equalsIgnoreCase("2")) {
+                
+                LinkedList<BeanRX> lista = SAT.Rayos_X();
+                
+                out.println("<div class=\"table-responsive\">");
+                out.println("<table border=\"1\"   class=\"table mb-0 table-striped table-sm display\">");
+                out.println("<thead>");                
+                out.println("<tr>");
+                out.println("<th>#</th>");
+                out.println("<th>Contenedor</th>");
+                out.println("<th>Fecha Hora Consulta Manifiesto</th>");
+                out.println("<th>Fecha Hora Resultado</th>");
+                out.println("</tr>");
+                out.println("</thead>");
+                out.println("<tbody>");
+                for (int i = 0; i < lista.size(); i++) {
+                    out.println("<tr>");
+                    out.println("<td>" + (i + 1) + "</td>");
+                    out.println("<td>" + lista.get(i).getPREFIJO() +"</td>");
+                    out.println("<td>" + lista.get(i).getFECHA_ESCANEO() +  "</td>");
+                    out.println("<td>" + lista.get(i).getIMPORTEXPORT()+  "</td>");
+                    out.println("</tr>");
+                }
+                out.println("</tbody>");
+                out.println("</table>");
+                out.println("</div>");
+                
+                
+            } else{
+
+                /* TODO output your page here. You may use following sample code. */
+                String Inicio = request.getParameter("Inicio");
                 String Final = request.getParameter("Final");
 
                 LinkedList<BeanRX> lista = SAT.RX_RESULTADO_ESCANEO_CONTE(Inicio, Final);
+                String lista1 = SAT.RX_RESULTADO_ESCANEO_CONTE1(Inicio, Final);
+
+                if (lista1 == null) {
+                    System.err.println("null");
+                }
 
                 out.println("<div class=\"table-responsive\">");
                 out.println("<table id=\"example\" border=\"1\"   class=\"display style=\"width:100%\" table table-hover table-bordered table-striped\">");
@@ -49,6 +142,8 @@ public class ServletSat extends HttpServlet {
                 out.println("<tr>");
                 out.println("<th colspan='13'><center>EMPRESA PORTUARIA NACIONAL SANTO TOMAS DE CASTILLA\n"
                         + "INFORMACION RAYOS X</center></th>");
+                out.println("</tr>");
+//            out.println("<th colspan='13'><center>"+lista1+"</center></th>");
                 out.println("</tr>");
                 out.println("<tr>");
                 out.println("<th>PREFIJO</th>");
@@ -77,6 +172,7 @@ public class ServletSat extends HttpServlet {
                 out.println("</tfoot>");
                 out.println("</table>");
                 out.println("</div>");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ServletSat.class.getName()).log(Level.SEVERE, null, ex);
         }

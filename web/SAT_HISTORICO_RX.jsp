@@ -93,13 +93,16 @@
                         data: {
                             Inicio: Inicio,
                             Final: Final,
-                            param: 6
+                            param: 2
                         },
 
                         success: function (data) {
 
                             $("#result").html(data);
+                            console.log(data);
                             $(document).ready(function () {
+                                
+                                
 
                                 $('#example tfoot th').each(function () {
                                     var title = $(this).text();

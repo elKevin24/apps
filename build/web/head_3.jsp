@@ -108,26 +108,15 @@
                                 <use xlink:href="#real-estate-1"> </use>
                                 </svg>Inicio </a></li>
 
-                        <%
-                            if (user1.getTIPO().equalsIgnoreCase("1")) {
-
-                        %>
-
-
-
-                        <%                                        }
-                        %>
-
-
-
-                        <li class="sidebar-item"><a class="sidebar-link" href="#RX" data-bs-toggle="collapse"> 
+                        
+<!--                        <li class="sidebar-item"><a class="sidebar-link" href="#RX" data-bs-toggle="collapse"> 
                                 <img src="img/truck.svg" class="svg-icon svg-icon-sm svg-icon-heavy me-xl-4">
                                 Rayos X </a></li>
                         <ul class="collapse list-unstyled " id="RX">
                             <li><a class="sidebar-link" href="SAT_HISTORICO_RX.jsp">Consulta Listado</a></li>
                             <li><a class="sidebar-link" href="SAT_ESTADO_RX.jsp">Consulta Estado</a></li>
-                            <!--<li><a class="sidebar-link" href="Usuarios_Listado_Solicitud.jsp">Listado Solicitudes</a></li>-->
-                        </ul>
+                            <li><a class="sidebar-link" href="Usuarios_Listado_Solicitud.jsp">Listado Solicitudes</a></li>
+                        </ul>-->
 
                         <li class="sidebar-item"><a class="sidebar-link" href="#Inventario_Conte_Contenedores" data-bs-toggle="collapse"> 
                                 <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-4">

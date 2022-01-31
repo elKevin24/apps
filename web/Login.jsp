@@ -44,7 +44,7 @@
         <link href="css/signin.css" rel="stylesheet" type="text/css"/>
         <style>
             body {
-                background-image: url('img/portada.JPG');
+                background-image: url('img/FONDO.jpg');
                 background-repeat: no-repeat;
                 background-position: center;
                 background-repeat: no-repeat;

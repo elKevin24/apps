@@ -34,6 +34,16 @@ public class BeanRX {
         this.IMPORTEXPORT = IMPORTEXPORT;
     }
 
+    public String getFECHA_BASCULA() {
+        return FECHA_BASCULA;
+    }
+
+    public void setFECHA_BASCULA(String FECHA_BASCULA) {
+        this.FECHA_BASCULA = FECHA_BASCULA;
+    }
+    
+    
+
     
 
 
@@ -43,6 +53,7 @@ public class BeanRX {
     private String IDENTIFICACION;
     private String FECHA_ESCANEO;
     private String IMPORTEXPORT;
+    private String FECHA_BASCULA;
     
     
     public BeanRX() {

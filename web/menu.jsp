@@ -37,11 +37,17 @@
 
 <jsp:include page="head_2.jsp" flush="true"></jsp:include>
 <%    
-    } else {
+    } else if (user.getCATEGORIA().equalsIgnoreCase("3")){
 %>
 <jsp:include page="head_3.jsp" flush="true"></jsp:include>
 <%
-        }
+        }else{
+
+%>
+<jsp:include page="head_4.jsp" flush="true"></jsp:include>
+<%
+
+}
     }
 %>
 

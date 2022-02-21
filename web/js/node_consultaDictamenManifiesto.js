@@ -6,7 +6,7 @@
 async function consultaDictamenManifiesto(cont) {
 
     var settings = {
-        "url": "http://172.20.10.107:8082/consultaDictamenManifiestoweb/pManifiesto/"+cont+"",
+        "url": "https://srvnjs.santotomasport.com.gt:3000/consultaDictamenManifiestoweb/pManifiesto/"+cont+"",
         "method": "GET",
         "timeout": 0,
     };

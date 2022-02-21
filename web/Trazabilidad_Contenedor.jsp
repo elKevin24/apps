@@ -14,17 +14,18 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<jsp:include page="head.jsp" flush="true"></jsp:include>
+    <!DOCTYPE html>
+    <html>
 
-    <head>
+        <head>
 
-        <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
-        <script src="js/node_consultaDictamenManifiesto.js" type="text/javascript"></script>
-        <script src="js/node_retencion_1.js" type="text/javascript"></script>
-        <title>Trazabilidad Contenedor</title>
-        <!--        <script src="js/node_retencion_1.js" type="text/javascript"></script>-->
-        <jsp:include page="head.jsp" flush="true"></jsp:include>
+            <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
+            <script src="js/node_consultaDictamenManifiesto.js" type="text/javascript"></script>
+            <script src="js/node_retencion_1.js" type="text/javascript"></script>
+            <title>Trazabilidad Contenedor</title>
+            <!--        <script src="js/node_retencion_1.js" type="text/javascript"></script>-->
+
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <!-- Compiled and minified JavaScript -->
             <link href="css/newcss.css" rel="stylesheet" type="text/css"/>
@@ -35,6 +36,16 @@
 
 
         <%
+            String usuario = String.valueOf(session.getAttribute("usuario"));
+            if (usuario == "null") {
+                System.out.println("entro al if del head");
+        %>
+
+        <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Login.jsp"> 
+
+        <%
+        } else {
+
             String id = request.getParameter("id");
 
             JSONObject retorno = servicios_web.Consultar(id);
@@ -195,16 +206,13 @@
                             </tr>
                             <tr class="celeste">
                                 <th>Mensaje</th>
-
-
                                 <th>MAGA</th>
                                 <th>DIPA</th>
                                 <th>SEPA</th>
-                                <th>SGAIA  </th>
+                                <th>SGAIA</th>
                             </tr>
                             <tr>
                                 <td id="mensaje"> <%= mensaje%></td>
-
                                 <td id="MAGA"><img src="img/Bullet-grey.png"></td>
                                 <td id="DIPA"><img src="img/Bullet-grey.png"></td>
                                 <td id="SEPA"><img src="img/Bullet-grey.png"></td>
@@ -278,6 +286,8 @@
                             </tr>
                         </table>
                     </div>
+
+                    <div id="resultado" class="z-index-n1 bg-white"></div>
                 </div>
             </div>
 
@@ -308,6 +318,9 @@
                 }
             }
 
+            
+
+
 
 
 
@@ -315,3 +328,7 @@
 
         <jsp:include page="foot.jsp" flush="true"></jsp:include>
 
+        <%
+
+            }
+        %>

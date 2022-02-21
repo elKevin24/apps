@@ -14,7 +14,7 @@
 
 //    
     if (usuario == "null") {
-        System.out.println("entro al if del head");
+        System.out.println("entro al if de Trazabilidad");
         response.sendRedirect("Login.jsp");
 
     } else {

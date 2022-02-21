@@ -8,7 +8,7 @@ async function ultimo_estado(duca) {
     console.log(duca);
 
     var settings = {
-		"url": "http://localhost:8082/web/declaracion/ultimoEstado/noDeclaraciones/"+duca+"",
+		"url": "https://srvnjs.santotomasport.com.gt:3000/web/declaracion/ultimoEstado/noDeclaraciones/"+duca+"",
 		"method": "GET",
 		"timeout": 0,
 };

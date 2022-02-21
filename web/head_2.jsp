@@ -38,7 +38,7 @@
             String usuario = String.valueOf(session.getAttribute("usuario"));
 
             if (usuario == "null") {
-//        System.out.println("entro al if");
+        System.out.println("entro al if head2");
                 response.sendRedirect("Login.jsp");
 
             } else {

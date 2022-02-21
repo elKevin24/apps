@@ -9,7 +9,7 @@
 async function retencionode1(cont) {
 
     var settings = {
-        "url": "http://172.20.10.107:8082/retencion/" + cont + "",
+        "url": "https://srvnjs.santotomasport.com.gt:3000/retencion/" + cont + "",
         "method": "GET",
         "timeout": 0,
     };

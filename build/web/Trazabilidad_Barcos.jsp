@@ -57,19 +57,16 @@
                 <tbody>
                     <%
                         String usuario = String.valueOf(session.getAttribute("usuario"));
-                        
+
                         BeanUsuarios user1 = new BeanUsuarios();
                         user1 = Usuario.Usuario_Menu(usuario);
-                        
+
                         BeanUsuarios user = new BeanUsuarios();
                         user = Usuario.ObtenerUsuario(user1.getCORREO());
                         String codigo = user.getUSUARIO_DE_SERVICIO();
 
-                        
-
 //                        BeanUsuarios user = new BeanUsuarios();
 //                        user = Usuario.ObtenerUsuario(user1.getCORREO());
-
                         System.err.println("CODIGO:  " + codigo);
 
                         LinkedList<Trazabilidad_Barcos> lista = TrazabilidadBarcos.consultarBarco(codigo);
@@ -94,6 +91,28 @@
         <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
         <!--<script src="js/jquery-3.5.1.js" type="text/javascript"></script>-->
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+        <script>
+
+            var settings = {
+                "url": "https://farm3.sat.gob.gt/retencion-liberacion-ws/rest/privado/retencionLiberacion/consultar",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Authorization": "Basic MzEzMzIyMjpFbXBvcm5hYzIwMTUr",
+                    "Content-Type": "application/json",
+                    "dataType": "jsonp",
+                    "crossDomain": true,
+                    
+                },
+                "data": JSON.stringify({
+                    "noContenedor": "TCNU1601505"
+                }),
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+        </script>
 
         <script type="text/javascript">
             $(document).ready(function () {

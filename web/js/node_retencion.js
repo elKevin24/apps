@@ -5,55 +5,36 @@
  */
 
 
-var listaconte = new Array();
-async function retencionode(cont) {
-
+//var listaconte = new Array();
+async function retencion_node(cont) {
+//console.log("hola"+cont);
     var settings = {
-        "url": "http://172.20.10.107:8082/retencion/" + cont + "",
+        "url": "https://srvnjs.santotomasport.com.gt:3000/retencion/" + cont + "",
         "method": "GET",
-        "timeout": 0,
+        "timeout": 0
     };
 
     $.ajax(settings).done(function (response) {
        
-
-        if (response == 'R') {
-            //console.log(response);
-            listaconte.push(cont);
-            //console.log(cont);
-            //console.log(listaconte);                    
+console.log(cont+" "+ response);
+        if (response === 'R') {
+//            document.getElementById(cont).innerHTML = '<label style="display: none;">2</label><img src="img/bullet-red.png" data-bs-toggle="tooltip" data-bs-placement="top" title="Retenido">';
+            $("#"+cont+"").attr("src","img/bullet-red.png");
+            $("#"+cont+"").attr("title","Retenido");
+            $("#"+cont+"").attr("aria-label","Retenido");
+            $("#"+cont+"").attr("data-bs-original-title","Retenido");
+                  
         }
+        if (response === 'L') {
+//            document.getElementById(cont).innerHTML = '<label style="display: none;">3</label><img src="img/bullet-green.png" data-bs-toggle="tooltip" data-bs-placement="top" title="Sin Retencion">';                 
+        $("#"+cont+"").attr("src","img/bullet-green.png");
+            $("#"+cont+"").attr("title","Sin Retenciones");
+            $("#"+cont+"").attr("aria-label","Sin Retenciones");
+            $("#"+cont+"").attr("data-bs-original-title","Sin Retenciones");
+        
+        }
+        
     });
     
-    return listaconte;
-}
 
-
-function retencionode2(cont) {
-
-    var settings = {
-        "url": "http://172.20.10.107:8082/retencion/" + cont + "",
-        "method": "GET",
-        "timeout": 0,
-    };
-
-    $.ajax(settings).done(function (response) {
-        //console.log(response);
-    });
-}
-
-function array() {
-
-  console.log(listaconte);
-  for (var i = 0; i < listaconte.length; i++) {
-
-        try {
-            // console.log(listaconte[i]);
-            document.getElementById(listaconte[i]).innerHTML = '<label style="display: none;">2</label><img src="img/bullet-red.png" data-bs-toggle="tooltip" data-bs-placement="top" title="Retenido">';
-            // declaraciones para try
-
-        } catch (e) {
-            // pasar el objeto exception al controlador de errores (es decir, su propia función)
-        }
-    }
 }

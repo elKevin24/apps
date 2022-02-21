@@ -607,15 +607,15 @@
           <!-- Page Footer-->
           <footer class="position-absolute bottom-0 bg-darkBlue text-white text-center py-3 w-100 text-xs" id="footer">
             <div class="container-fluid">
-              <div class="row gy-2">
+<!--              <div class="row gy-2">
                 <div class="col-sm-6 text-sm-start">
                   <p class="mb-0">EMPORNAC &copy; 2022</p>
                 </div>
                 <div class="col-sm-6 text-sm-end">
                   <p class="mb-0">Design by <a href="https://bootstrapious.com/p/admin-template" class="text-white text-decoration-none">Bootstrapious</a></p>
-                  <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                   Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)
                 </div>
-              </div>
+              </div>-->
             </div>
           </footer>
         </div>
@@ -623,7 +623,7 @@
     </div>
     <!-- JavaScript files-->
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <!--<script src="vendor/chart.js/Chart.min.js"></script>-->
     <script src="vendor/just-validate/js/just-validate.min.js"></script>
     <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="js/charts-home.js"></script>

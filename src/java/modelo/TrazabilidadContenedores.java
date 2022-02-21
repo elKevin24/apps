@@ -12,18 +12,19 @@ public class TrazabilidadContenedores {
 
     public static LinkedList<Trazabilidad_Contenedores> consultarCont(String entrada, String usuario) throws SQLException {
         LinkedList<Trazabilidad_Contenedores> usuarios = new LinkedList<>();
-        String sql = "select  tc.tcf_prefijo||tc.tcf_identificacion as cont, tc.tcf_descarga_fecha fecha_descarga,\n"
-                + "puerto.f_busca_escaneo_rx(tc.tcf_prefijo||tc.tcf_identificacion,TRUNC(TC.TCF_DESCARGA_FECHA)-2,'I') escaneo,\n"
+        String sql = "select  tc.tcf_prefijo||tc.tcf_identificacion as cont, \n"
+                + "NVL(TO_CHAR(tc.tcf_descarga_fecha, 'DD-MM-YYYY'), '0') fecha_descarga,\n"
+                + "NVL(TO_CHAR(puerto.f_busca_escaneo_rx(tc.tcf_prefijo||tc.tcf_identificacion,TRUNC(TC.TCF_DESCARGA_FECHA)-2,'I'), 'DD-MM-YYYY'), '0') escaneo,\n"
                 + "puerto.F_BUSCA_PESO_BASCULA(tc.tcf_correlativo_tarjeta, NULL, TC.TCF_DESPACHO ) bascula,\n"
-                + "TC.TCF_DESPACHO_FECHA salida_recinto,\n"
+                + "NVL(TO_CHAR(TC.TCF_DESPACHO_FECHA, 'DD-MM-YYYY'), '0') salida_recinto,\n"
                 + "DECODE(TC.TCF_DESPACHO_FECHA,NULL,puerto.F_UBICACION_ACTUAL_CONTE(tc.tcf_correlativo_tarjeta),'NO') ubicacion_contenedor\n"
                 + "from PUERTO.tarjeta_cof tc, PUERTO.CCOP_DETALLE_CARDESC_CO DD\n"
                 + "where (DD.VIAJE_NO = TC.TCF_VIAJE_SISTEMA\n"
                 + "       AND DD.TIPO_DE_MOVIMIENTO = 1\n"
                 + "       AND DD.PREFIJO = TC.TCF_PREFIJO\n"
                 + "       AND DD.NUMERO_DE_IDENTIFICACION = TC.TCF_IDENTIFICACION\n"
-                + "       AND DD.OPERADOR = " + usuario + " )\n"
-                + "AND tc.tcf_viaje_sistema = " + entrada + "\n"
+                + "       AND DD.OPERADOR = '"+usuario+"'  )\n"
+                + "AND tc.tcf_viaje_sistema = '"+entrada+"'\n"
                 + "AND TC.TCF_RECEPCION IS NULL order by tc.tcf_prefijo||tc.tcf_identificacion";
 
         try {
@@ -175,11 +176,10 @@ public class TrazabilidadContenedores {
                         + "FROM EDI.MANIFIESTO M, EDI.EQUIPO_MANIFESTADO A\n"
                         + "WHERE M.N_UNICO_MANIF = A.N_UNICO_MANIF\n"
                         + "AND M.MODALIDAD = DECODE('I','I','179','E','178')\n"
-                        + "AND A.NUM_CONTENEDOR = '"+contenedor+"'\n"
+                        + "AND A.NUM_CONTENEDOR = '" + contenedor + "'\n"
                         + "ORDER BY A.FECHA_DECODIFICACION DESC)\n"
                         + "WHERE ROWNUM = 1")) {
-                      
-                    
+
                     while (rs.next()) {
 
                         user.setC1(rs.getString("RECIBIDO"));
@@ -189,29 +189,29 @@ public class TrazabilidadContenedores {
                         user.setC5(rs.getString("ETA"));
 
                     }
-                    if(user.getC1()== null){
+                    if (user.getC1() == null) {
                         user.setC1(" ");
                         user.setC2(" ");
                         user.setC3(" ");
                         user.setC4(" ");
                         user.setC5(" ");
-                        
+
                     }
-                    
+
                 }
                 st.close();
             }
         } catch (SQLException e) {
-            System.err.println("ManifiestoImport: "+e);
+            System.err.println("ManifiestoImport: " + e);
         }
-        
+
         return user;
 
     }
-    
+
     public static Trazabilidad_Contenedores ManifiestoExport(String contenedor) {
         Trazabilidad_Contenedores user = new Trazabilidad_Contenedores();
-        System.err.println(""+contenedor);
+        System.err.println("" + contenedor);
         try {
             Conexion c = new Conexion();
             try (Connection con = c.getConexion()) {
@@ -223,7 +223,7 @@ public class TrazabilidadContenedores {
                         + "FROM EDI.MANIFIESTO M, EDI.EQUIPO_MANIFESTADO A\n"
                         + "WHERE M.N_UNICO_MANIF = A.N_UNICO_MANIF\n"
                         + "AND M.MODALIDAD = DECODE('E','I','179','E','178')\n"
-                        + "AND A.NUM_CONTENEDOR = '"+contenedor+"'\n"
+                        + "AND A.NUM_CONTENEDOR = '" + contenedor + "'\n"
                         + "ORDER BY A.FECHA_DECODIFICACION DESC)\n"
                         + "WHERE ROWNUM = 1")) {
                     while (rs.next()) {
@@ -233,29 +233,24 @@ public class TrazabilidadContenedores {
                         user.setC3(rs.getString("BUQUE"));
                         user.setC4(rs.getString("VIAJE"));
                         user.setC5(rs.getString("ETA"));
-                        
-                        
-                        
-                       
 
                     }
-                    if(user.getC1()== null){
+                    if (user.getC1() == null) {
                         user.setC1(" ");
                         user.setC2(" ");
                         user.setC3(" ");
                         user.setC4(" ");
                         user.setC5(" ");
-                        
+
                     }
                 }
                 st.close();
             }
         } catch (SQLException e) {
-            System.err.println("ManifiestoExport: "+e);
-            
+            System.err.println("ManifiestoExport: " + e);
+
         }
-        
-        
+
         return user;
 
     }

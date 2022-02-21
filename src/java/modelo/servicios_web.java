@@ -31,7 +31,7 @@ public class servicios_web {
 
         long fecha = new Date().getTime();
         Date currentDate = new Date(fecha);
-        DateFormat df = new SimpleDateFormat("dd:MM:yy:HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("dd:MM:YYYY HH:mm:ss");
 
         try {
             Unirest.setTimeouts(10, 10);
@@ -148,10 +148,10 @@ public class servicios_web {
 
         long fecha = new Date().getTime();
         Date currentDate = new Date(fecha);
-        DateFormat df = new SimpleDateFormat("dd:MM:yy:HH:mm:ss.sss");
+        DateFormat df = new SimpleDateFormat("dd:MM:YYYY HH:mm:ss.SSS");
         
 
-        System.out.println("entrada: " + df.format(currentDate));
+        System.out.println("entrando al web service retencion: " + df.format(currentDate));
         JSONObject jsonobj = null;
         String mensaje = null;
         String retenciones = null;
@@ -171,7 +171,7 @@ public class servicios_web {
                     .asString();
 
             if (response.getStatus() == 200) {
-                System.err.println("entro 200 Consultar");
+                System.err.println("entro 200 service retencion");
                 jsonobj = new JSONObject(response.getBody());
 
                 //mensaje = (String) jsonobj.get("mensaje");
@@ -214,15 +214,21 @@ public class servicios_web {
         }
         long fecha1 = new Date().getTime();
         Date currentDate1 = new Date(fecha1);
-        DateFormat df1 = new SimpleDateFormat("dd:MM:yy:HH:mm:ss.sss");
+        DateFormat df1 = new SimpleDateFormat("dd:MM:YYYY HH:mm:ss.SSS");
         
 
-        System.out.println("salida: " + df1.format(currentDate1));
+        System.out.println("salida del web service retencion: " + df1.format(currentDate1));
         return jsonobj;
 
     }
 
     public static JSONObject ConsultarATC(String contenedor) {
+        
+        
+        long fecha = new Date().getTime();
+        Date currentDate = new Date(fecha);
+        DateFormat df = new SimpleDateFormat("dd:MM:yyyy HH:mm:ss.SSS");      
+        System.out.println("entrando al web service atc: " + df.format(currentDate));
 
         JSONObject jsonobjATC = null;
         String mensaje = null;
@@ -283,6 +289,13 @@ public class servicios_web {
         } catch (UnirestException | JSONException ex) {
             Logger.getLogger(servicios_web.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        long fecha1 = new Date().getTime();
+        Date currentDate1 = new Date(fecha1);
+        DateFormat df1 = new SimpleDateFormat("dd:MM:yyyy HH:mm:ss.SSS");       
+        System.out.println("salida del web service atc:: " + df1.format(currentDate1));
+        
+        
         return jsonobjATC;
 
     }

@@ -51,6 +51,10 @@
                 background-size: cover;
                 position: relative;
             }
+            #texto{
+                color: #ffffff;
+                text-align: justify;
+            }
         </style>
     </head>
 
@@ -68,8 +72,7 @@
 
                     <div class="d-flex justify-content-center">
                         <div class="brand_logo_container">                                                                                   
-                            <img src="img/Logo (2).png" class="brand_logo" alt="Logo">
-                            
+                            <img src="img/Logo (2).png" class="brand_logo" alt="Logo">                         
 
                         </div>
                     </div>
@@ -92,6 +95,7 @@
                     </div>
 
                     <button class="w-100 btn btn-lg btn-primary" value="Ingresar" name="accion" type="submit">Sign in</button>
+                    <label id="texto">Los datos brindados en esta aplicación únicamente son de carácter informativo, si desea validar o certificar dichos datos deberá comunicarse a las unidades dueñas de proceso de esta empresa</label>
 
 
                 </form>

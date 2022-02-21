@@ -45,80 +45,17 @@
                 }
             </style>
         </head>
+        
+    <%
+        
+        String id = request.getParameter("id");
+            System.err.println("ID: "+id);
+
+        %>
 
 
-        <div class="container-fluid">
-            <div class="row gy-4">
-                <div class="col-lg-4">
-                    <div class="card mb-0">
-                        <div class="card-header">
-                            <div class="card-close">
-                                <div class="dropdown">
-                                    <button class="dropdown-toggle text-sm" type="button" id="closeCard1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
-                                    <div class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="closeCard1"><a class="dropdown-item py-1 px-3 remove" href="#"> <i class="fas fa-times"></i>Close</a><a class="dropdown-item py-1 px-3 edit" href="#"> <i class="fas fa-cog"></i>Edit</a></div>
-                                </div>
-                            </div>
-                            <h3 class="h4 mb-0">SALA</h3>
-                        </div>
-                        <div class="card-body" id="SALA">
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4">
-                    <div class="card mb-0">
-                        <div class="card-header">
-                            <div class="card-close">
-                                <div class="dropdown">
-                                    <button class="dropdown-toggle text-sm" type="button" id="closeCard1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
-                                    <div class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="closeCard1"><a class="dropdown-item py-1 px-3 remove" href="#"> <i class="fas fa-times"></i>Close</a><a class="dropdown-item py-1 px-3 edit" href="#"> <i class="fas fa-cog"></i>Edit</a></div>
-                                </div>
-                            </div>
-                            <h3 class="h4 mb-0">YA PASARON POR CEIBA</h3>
-                        </div>
-                        <div class="card-body" id="ceiba">
-
-                        </div>
-                    </div>
-                    <br>
-                    <div class="card mb-0">
-                        <div class="card-header">
-                            <div class="card-close">
-                                <div class="dropdown">
-                                    <button class="dropdown-toggle text-sm" type="button" id="closeCard1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
-                                    <div class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="closeCard1"><a class="dropdown-item py-1 px-3 remove" href="#"> <i class="fas fa-times"></i>Close</a><a class="dropdown-item py-1 px-3 edit" href="#"> <i class="fas fa-cog"></i>Edit</a></div>
-                                </div>
-                            </div>
-                            <h3 class="h4 mb-0">Bascula</h3>
-                        </div>
-                        <div class="card-body" id="Bascula">
-
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div class="col-lg-4">
-                    <div class="card mb-0">
-                        <div class="card-header">
-                            <div class="card-close">
-                                <div class="dropdown">
-                                    <button class="dropdown-toggle text-sm" type="button" id="closeCard1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
-                                    <div class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="closeCard1"><a class="dropdown-item py-1 px-3 remove" href="#"> <i class="fas fa-times"></i>Close</a><a class="dropdown-item py-1 px-3 edit" href="#"> <i class="fas fa-cog"></i>Edit</a></div>
-                                </div>
-                            </div>
-                            <h3 class="h4 mb-0">ESCANEADOS</h3>
-                        </div>
-                        <div class="card-body" id="Rayos_X">
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
+        <div id="ceiba">
+            
         </div>
 
 
@@ -145,49 +82,9 @@
                     success: function (data) {
 
                         $("#ceiba").html(data);
-
-
-
-
-
-                    }
-                });
-
-            }
-
-            function Sala_de_Control() {
-
-                $.ajax({
-                    url: "ServletSat",
-                    data: {
-
-                        param: 0
-                    },
-                    success: function (data) {
-
-                        $("#SALA").html(data);
-
-
-                    }
-                });
-
-            }
-
-            function Rayos_X() {
-
-                $.ajax({
-                    url: "ServletSat",
-                    data: {
-
-                        param: 2
-                    },
-                    success: function (data) {
-
-                        $("#Rayos_X").html(data);
-
-
+                        console.log("hola");
                         var table = $('table.display').DataTable({
-                            "order": [[0, "asc"]],
+                            "ordering": false,
                             "aLengthMenu": [[20, 50, 75, -1], [20, 50, 75, "All"]],
                             "iDisplayLength": 20,
                             dom: 'Bfrtip',
@@ -205,36 +102,81 @@
                                 }
                             ]
                         });
-
-
-
-
-
+                        
                     }
                 });
 
             }
+
+//            function Sala_de_Control() {
+//
+//                $.ajax({
+//                    url: "ServletSat",
+//                    data: {
+//
+//                        param: 0
+//                    },
+//                    success: function (data) {
+//
+//                        $("#SALA").html(data);
+//
+//
+//                    }
+//                });
+//
+//            }
+
+//            function Rayos_X() {
+//
+//                $.ajax({
+//                    url: "ServletSat",
+//                    data: {
+//
+//                        param: 2
+//                    },
+//                    success: function (data) {
+//
+//                        $("#Rayos_X").html(data);
+//
+//
+//                        var table = $('table.display').DataTable({
+//                            "order": [[0, "asc"]],
+//                            "aLengthMenu": [[20, 50, 75, -1], [20, 50, 75, "All"]],
+//                            "iDisplayLength": 20,
+//                            dom: 'Bfrtip',
+//                            buttons: [
+//
+//                                {
+//                                    extend: 'excelHtml5',
+//                                    title: 'INVENTARIO DE CONTENEDORES'
+//                                },
+//                                {
+//                                    extend: 'pdfHtml5',
+//                                    title: 'INVENTARIO DE CONTENEDORES',
+//                                    pageSize: 'LEGAL'
+//
+//                                }
+//                            ]
+//                        });
+//
+//
+//
+//
+//
+//                    }
+//                });
+//
+//            }
             ceiba();
-            Sala_de_Control();
-            Rayos_X();
+//            Sala_de_Control();
+//            Rayos_X();
 
 
             $(document).ready(function () {
 
-
-
-
-
-
-
-                setInterval(ceiba, 31000);
-                setInterval(Sala_de_Control, 32000);
-                setInterval(Rayos_X, 33000);
-
-
-
-
-
+//                setInterval(ceiba, 10000);
+//                setInterval(Sala_de_Control, 32000);
+//                setInterval(Rayos_X, 33000);
 
             });
 

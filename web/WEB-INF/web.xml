@@ -24,6 +24,10 @@
         <servlet-name>ServletPass</servlet-name>
         <servlet-class>vista.ServletPass</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletWS</servlet-name>
+        <servlet-class>vista.ServletWS</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ServletPass</servlet-name>
         <url-pattern>/ServletPass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletWS</servlet-name>
+        <url-pattern>/ServletWS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

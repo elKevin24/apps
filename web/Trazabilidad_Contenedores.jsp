@@ -42,7 +42,7 @@
 
 
     <div class="container-fluid">
-        <h3 class="center"> Listado de Contenedores Descarga</h3>
+        <h3 class="center">Listado de Contenedores Descarga</h3>
         <div class="table-responsive-sm">
             <table id="example" border="1"   class="display table table-hover table-bordered table-striped" >
                 <thead>
@@ -78,8 +78,8 @@
                     %>
                 <script>
 
-                    retencionode("<%= lista.get(i).getC1()%>");
-                    atc("<%= lista.get(i).getC1()%>");
+//                    retencionode("<%= lista.get(i).getC1()%>");
+
 
 
                 </script>
@@ -100,10 +100,10 @@
                         }
 
                         //5
-                        out.println("<td id='" + lista.get(i).getC1() + "' class='text-center'><label style='display: none;'>1</label><img src='img/bullet-green.png' data-bs-toggle='tooltip' data-bs-placement='top' title='Sin Retenciones'></td>");
+                        out.println("<td class='text-center'><label style='display: none;'>1</label><img src='img/Bullet-grey.png' id='" + lista.get(i).getC1() + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Sin Respuesta de Sat'></td>");
 
                         //6
-                        out.println("<td id='" + lista.get(i).getC1() + "atc' class='text-center'> <img src='img/bullet-red.png' data-bs-toggle='tooltip' data-bs-placement='top' title='No Registrado'></></td>");
+                        out.println("<td class='text-center'> <img src='img/Bullet-grey.png' id='" + lista.get(i).getC1() + "atc' data-bs-toggle='tooltip' data-bs-placement='top' title='Sin Respuesta de Sat '></></td>");
 
                         //7
                         if (lista.get(i).getC6() == null || (lista.get(i).getC6().equals("NO"))) {
@@ -136,20 +136,9 @@
                 %>  
                 </tbody>
 
-                <tfoot>
-                    <tr>
-                        <th>NUMERO CONTENEDOR</th>
-                        <th>FECHA DESCARGA</th>
-                        <th>REVISION NO INTRUSIVA</th>
-                        <th>PESAJE BASCULA</th>
-                        <th>RETENCION </th>
-                        <th>ATC</th>
-                        <th>UBICACION PATIO DAT</th>
-                        <th>SALIDA DAT</th>
-                        <th>DETALLE</th>
-                    </tr>
-                </tfoot>
+
             </table>
+
         </div>
     </div>
 
@@ -163,19 +152,40 @@
 
 
                     $(document).ready(function () {
-                        $('[data-toggle="tooltip"]').tooltip();
-                        $('#example').dataTable({
+
+                        var table = $('#example').DataTable({
                             "drawCallback": function (settings) {
+                                var api = this.api();
 
-                                array();
-                                array_atc();
+                                // Output the data for the visible rows to the browser's console
+//                                console.log(api.columns({page: 'current'}).data());
+                                var lista_conte = api.columns({page: 'current'}).data().eq(0).sort()       // Sort data alphabetically
+                                        .unique();
+//                                table_filtered = this.rows({page: 'current'})
+//
+//                               console.log(lista_conte);
+//                                array();
+//                                array_atc();
 
-                                $('[data-toggle="tooltip"]').tooltip();
+                                for (let i = 0; i < lista_conte.length; i++) {
+
+//                                    console.log(lista_conte[i]);
+                                    retencion_node(lista_conte[i]);
+                                    atc(lista_conte[i]);
+                                    $('[data-toggle="tooltip"]').tooltip();  
 
 
-                            }, "order": [[0, "asc"]]
-                                    //}
+                                }
+
+
+
+                            }, "order": [[0, "asc"]],
+
+                            //}
                         });
+
+
+
                     });
 
 

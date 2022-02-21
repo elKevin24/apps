@@ -38,15 +38,30 @@ public class ServletSat extends HttpServlet {
 
         try (PrintWriter out = response.getWriter()) {
 
-            if (request.getParameter("param").equalsIgnoreCase("0")) {
-                
+            if (request.getParameter("param").equalsIgnoreCase("1")) {
+
+                out.println("<div class=\"container-fluid\">\n"
+                        + "            <div class=\"row gy-4\">\n"
+                        + "                <div class=\"col-lg-3\">\n"
+                        + "                    <div class=\"card mb-0\">\n"
+                        + "                        <div class=\"card-header\">\n"
+                        + "                            <div class=\"card-close\">\n"
+                        + "                                <div class=\"dropdown\">\n"
+                        + "                                    <button class=\"dropdown-toggle text-sm\" type=\"button\" id=\"closeCard1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"fas fa-ellipsis-v\"></i></button>\n"
+                        + "                                    <div class=\"dropdown-menu dropdown-menu-end shadow-sm\" aria-labelledby=\"closeCard1\"><a class=\"dropdown-item py-1 px-3 remove\" href=\"#\"> <i class=\"fas fa-times\"></i>Close</a><a class=\"dropdown-item py-1 px-3 edit\" href=\"#\"> <i class=\"fas fa-cog\"></i>Edit</a></div>\n"
+                        + "                                </div>\n"
+                        + "                            </div>\n"
+                        + "                            <h3 class=\"h4 mb-0\">SALA DE CONTROL</h3>\n"
+                        + "                        </div>\n"
+                        + "                        <div class=\"card-body\" >");
+
                 LinkedList<BeanRX> lista = SAT.Sala_de_Control();
-                
+
                 out.println("<div class=\"table-responsive\">");
                 out.println("<table border=\"1\"   class=\"table mb-0 table-striped table-sm display\">");
-                out.println("<thead>");                
+                out.println("<thead>");
                 out.println("<tr>");
-                out.println("<th>#</th>");
+
                 out.println("<th>Contenedor</th>");
                 out.println("<th>Fecha Hora Recepcion</th>");
                 out.println("</tr>");
@@ -54,75 +69,153 @@ public class ServletSat extends HttpServlet {
                 out.println("<tbody>");
                 for (int i = 0; i < lista.size(); i++) {
                     out.println("<tr>");
-                    out.println("<td>" + (i + 1) + "</td>");
-                    out.println("<td>" + lista.get(i).getPREFIJO() +"</td>");
-                    out.println("<td>" + lista.get(i).getFECHA_ESCANEO() +  "</td>");
+
+                    out.println("<td>" + lista.get(i).getPREFIJO() + "</td>");
+                    out.println("<td>" + lista.get(i).getFECHA_ESCANEO() + "</td>");
                     out.println("</tr>");
                 }
                 out.println("</tbody>");
                 out.println("</table>");
                 out.println("</div>");
-                
-                
-            } else if (request.getParameter("param").equalsIgnoreCase("1")) {
-                
-                LinkedList<BeanRX> lista = SAT.Ceiba();
-                
+
+                out.println("</div>\n"
+                        + "                    </div>\n"
+                        + "                </div>\n"
+                        + "\n"
+                        + "\n"
+                        + "                <div class=\"col-lg-5\">\n"
+                        + "                    <div class=\"card mb-0\">\n"
+                        + "                        <div class=\"card-header\">\n"
+                        + "                            <div class=\"card-close\">\n"
+                        + "                                <div class=\"dropdown\">\n"
+                        + "                                    <button class=\"dropdown-toggle text-sm\" type=\"button\" id=\"closeCard1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"fas fa-ellipsis-v\"></i></button>\n"
+                        + "                                    <div class=\"dropdown-menu dropdown-menu-end shadow-sm\" aria-labelledby=\"closeCard1\"><a class=\"dropdown-item py-1 px-3 remove\" href=\"#\"> <i class=\"fas fa-times\"></i>Close</a><a class=\"dropdown-item py-1 px-3 edit\" href=\"#\"> <i class=\"fas fa-cog\"></i>Edit</a></div>\n"
+                        + "                                </div>\n"
+                        + "                            </div>\n"
+                        + "                            <h3 class=\"h4 mb-0\">YA PASARON POR CEIBA</h3>\n"
+                        + "                        </div>\n"
+                        + "                        <div class=\"card-body\">");
+
+                LinkedList<BeanRX> lista1 = SAT.Ceiba();
+
                 out.println("<div class=\"table-responsive\">");
                 out.println("<table border=\"1\"   class=\"table mb-0 table-striped table-sm display\">");
-                out.println("<thead>");                
+                out.println("<thead>");
                 out.println("<tr>");
-                out.println("<th>#</th>");
                 out.println("<th>Contenedor</th>");
                 out.println("<th>Fecha Hora Recepcion</th>");
                 out.println("<th>Fecha Hora Entrada</th>");
+                out.println("<th>Fecha Hora Ubicacion</th>");
+                out.println("</tr>");
+                out.println("</thead>");
+                out.println("<tbody>");
+                for (int i = 0; i < lista1.size(); i++) {
+                    out.println("<tr>");
+                    
+                    out.println("<td>" + lista1.get(i).getPREFIJO() + "</td>");
+                    out.println("<td>" + lista1.get(i).getFECHA_ESCANEO() + "</td>");
+                    out.println("<td>" + lista1.get(i).getIMPORTEXPORT() + "</td>");
+                    out.println("<td>" + lista1.get(i).getIDENTIFICACION() + "</td>");
+                    out.println("</tr>");
+                }
+                out.println("</tbody>");
+                out.println("</table>");
+                out.println("</div>");
+
+                out.println("</div>\n"
+                        + "                    </div>\n"
+                        + "                    <br>\n"
+                        + "                    <div class=\"card mb-0\">\n"
+                        + "                        <div class=\"card-header\">\n"
+                        + "                            <div class=\"card-close\">\n"
+                        + "                                <div class=\"dropdown\">\n"
+                        + "                                    <button class=\"dropdown-toggle text-sm\" type=\"button\" id=\"closeCard1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"fas fa-ellipsis-v\"></i></button>\n"
+                        + "                                    <div class=\"dropdown-menu dropdown-menu-end shadow-sm\" aria-labelledby=\"closeCard1\"><a class=\"dropdown-item py-1 px-3 remove\" href=\"#\"> <i class=\"fas fa-times\"></i>Close</a><a class=\"dropdown-item py-1 px-3 edit\" href=\"#\"> <i class=\"fas fa-cog\"></i>Edit</a></div>\n"
+                        + "                                </div>\n"
+                        + "                            </div>\n"
+                        + "                            <h3 class=\"h4 mb-0\">YA PASARON POR BASCULA</h3>\n"
+                        + "                        </div>\n"
+                        + "                        <div class=\"card-body\">");
+
+                LinkedList<BeanRX> lista2 = SAT.Bascula();
+
+                out.println("<div class=\"table-responsive\">");
+                out.println("<table border=\"1\"   class=\"table mb-0 table-striped table-sm display\">");
+                out.println("<thead>");
+                out.println("<tr>");
+                
+                out.println("<th>Contenedor</th>");
+                out.println("<th>Fecha Hora Entrada</th>");
+                out.println("<th>Fecha Hora Bascula</th>");
                 out.println("<th>Fecha Ubicacion</th>");
                 out.println("</tr>");
                 out.println("</thead>");
                 out.println("<tbody>");
-                for (int i = 0; i < lista.size(); i++) {
+                for (int i = 0; i < lista2.size(); i++) {
                     out.println("<tr>");
-                    out.println("<td>" + (i + 1) + "</td>");
-                    out.println("<td>" + lista.get(i).getPREFIJO() +"</td>");
-                    out.println("<td>" + lista.get(i).getFECHA_ESCANEO() +  "</td>");
-                    out.println("<td>" + lista.get(i).getIMPORTEXPORT() +  "</td>");
-                    out.println("<td>" + lista.get(i).getIDENTIFICACION()+  "</td>");
+                    
+                    out.println("<td>" + lista2.get(i).getPREFIJO() + "</td>");
+                    out.println("<td>" + lista2.get(i).getIMPORTEXPORT() + "</td>");
+                    out.println("<td>" + lista2.get(i).getFECHA_BASCULA() + "</td>");
+                    out.println("<td>" + lista2.get(i).getIDENTIFICACION() + "</td>");
                     out.println("</tr>");
                 }
                 out.println("</tbody>");
                 out.println("</table>");
                 out.println("</div>");
-                
-                
-            } else if (request.getParameter("param").equalsIgnoreCase("2")) {
-                
-                LinkedList<BeanRX> lista = SAT.Rayos_X();
-                
+
+                out.println("</div>\n"
+                        + "                    </div>\n"
+                        + "                </div>\n"
+                        + "                \n"
+                        + "\n"
+                        + "                <div class=\"col-lg-4\">\n"
+                        + "                    <div class=\"card mb-0\">\n"
+                        + "                        <div class=\"card-header\">\n"
+                        + "                            <div class=\"card-close\">\n"
+                        + "                                <div class=\"dropdown\">\n"
+                        + "                                    <button class=\"dropdown-toggle text-sm\" type=\"button\" id=\"closeCard1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"fas fa-ellipsis-v\"></i></button>\n"
+                        + "                                    <div class=\"dropdown-menu dropdown-menu-end shadow-sm\" aria-labelledby=\"closeCard1\"><a class=\"dropdown-item py-1 px-3 remove\" href=\"#\"> <i class=\"fas fa-times\"></i>Close</a><a class=\"dropdown-item py-1 px-3 edit\" href=\"#\"> <i class=\"fas fa-cog\"></i>Edit</a></div>\n"
+                        + "                                </div>\n"
+                        + "                            </div>\n"
+                        + "                            <h3 class=\"h4 mb-0\">CONTROL RAYOS X</h3>\n"
+                        + "                        </div>\n"
+                        + "                        <div class=\"card-body\">");
+
+                LinkedList<BeanRX> lista3 = SAT.Rayos_X();
+
                 out.println("<div class=\"table-responsive\">");
                 out.println("<table border=\"1\"   class=\"table mb-0 table-striped table-sm display\">");
-                out.println("<thead>");                
+                out.println("<thead>");
                 out.println("<tr>");
-                out.println("<th>#</th>");
+               
                 out.println("<th>Contenedor</th>");
-                out.println("<th>Fecha Hora Consulta Manifiesto</th>");
-                out.println("<th>Fecha Hora Resultado</th>");
+                out.println("<th>Fecha Consulta Manifiesto</th>");
+                out.println("<th>Fecha Resultado</th>");
                 out.println("</tr>");
                 out.println("</thead>");
                 out.println("<tbody>");
-                for (int i = 0; i < lista.size(); i++) {
+                for (int i = 0; i < lista3.size(); i++) {
                     out.println("<tr>");
-                    out.println("<td>" + (i + 1) + "</td>");
-                    out.println("<td>" + lista.get(i).getPREFIJO() +"</td>");
-                    out.println("<td>" + lista.get(i).getFECHA_ESCANEO() +  "</td>");
-                    out.println("<td>" + lista.get(i).getIMPORTEXPORT()+  "</td>");
+                    
+                    out.println("<td>" + lista3.get(i).getPREFIJO() + "</td>");
+                    out.println("<td>" + lista3.get(i).getFECHA_ESCANEO() + "</td>");
+                    out.println("<td>" + lista3.get(i).getIMPORTEXPORT() + "</td>");
                     out.println("</tr>");
                 }
                 out.println("</tbody>");
                 out.println("</table>");
                 out.println("</div>");
-                
-                
-            } else{
+
+                out.println("</div>\n"
+                        + "                    </div>\n"
+                        + "                </div>\n"
+                        + "\n"
+                        + "\n"
+                        + "            </div>\n"
+                        + "        </div>");
+
+            } else {
 
                 /* TODO output your page here. You may use following sample code. */
                 String Inicio = request.getParameter("Inicio");
@@ -172,6 +265,7 @@ public class ServletSat extends HttpServlet {
                 out.println("</tfoot>");
                 out.println("</table>");
                 out.println("</div>");
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(ServletSat.class.getName()).log(Level.SEVERE, null, ex);

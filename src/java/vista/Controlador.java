@@ -35,6 +35,9 @@ public class Controlador extends HttpServlet {
 //                session.setAttribute("clave", clave);
 //                System.err.println("user"+p.getId_login());
 
+
+//                boolean A = modelo.Usuario.agregar_Bitacora(p.getId_login());
+
                 request.getSession().setAttribute("usuario", p.getId_login());
 //                
 
@@ -45,8 +48,6 @@ public class Controlador extends HttpServlet {
                 } else {
                     response.sendRedirect("menu.jsp");
                 }
-
-                
 
             } else {
                 request.setAttribute("mensaje", "false");

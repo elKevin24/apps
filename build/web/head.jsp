@@ -15,7 +15,11 @@
 //    
     if (usuario == "null") {
         System.out.println("entro al if de Trazabilidad");
-        response.sendRedirect("Login.jsp");
+        %>
+
+        <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Login.jsp"> 
+
+        <%
 
     } else {
 

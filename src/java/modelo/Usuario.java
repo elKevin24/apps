@@ -176,6 +176,31 @@ public class Usuario {
         }
         return agregado;
     }
+    
+    public static boolean agregar_Bitacora(String Usuario) {
+        boolean agregado = false;
+        try {
+            Conexion c = new Conexion();
+            Connection con = c.getConexion();
+            if (con != null) {
+                Statement st;
+                st = con.createStatement();
+                //campos de la tabla
+                String sql = "INSERT INTO USUARIOS_WEB.UPW_BITACORA (ID_USUARIO) VALUES ('" + Usuario + "')";
+
+                System.out.println(sql);
+                st.execute(sql);
+
+                agregado = true;
+                st.close();
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            agregado = false;
+        }
+        return agregado;
+    }
 
     public static boolean agregar_Usuario(controlador.Usuario User) {
         boolean agregado = false;

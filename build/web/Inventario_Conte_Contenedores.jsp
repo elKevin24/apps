@@ -37,7 +37,7 @@
 
 
         %>
-        <div class="container">
+        <div class="container-fluid">
             <div class="card">
                 <div class="card-header text-center">
                     <h1><center>Inventario de Contenedores </center></h1>

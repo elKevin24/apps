@@ -114,7 +114,7 @@
                                 Rayos X </a></li>
                         <ul class="collapse list-unstyled " id="RX">
                             <li><a class="sidebar-link" href="SAT_HISTORICO_RX.jsp">Consulta Listado</a></li>
-                            <!--<li><a class="sidebar-link" href="SAT_ESTADO_RX.jsp">Consulta Estado</a></li>-->
+                            <li><a class="sidebar-link" href="CONFIRMACION.jsp">Confirmacion 632</a></li>
                             <!--<li><a class="sidebar-link" href="Usuarios_Listado_Solicitud.jsp">Listado Solicitudes</a></li>-->
                         </ul>
 

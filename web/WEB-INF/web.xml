@@ -28,6 +28,10 @@
         <servlet-name>ServletWS</servlet-name>
         <servlet-class>vista.ServletWS</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletManifiestos</servlet-name>
+        <servlet-class>vista.ServletManifiestos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ServletWS</servlet-name>
         <url-pattern>/ServletWS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletManifiestos</servlet-name>
+        <url-pattern>/ServletManifiestos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

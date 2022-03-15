@@ -41,11 +41,15 @@
     } else if (user.getCATEGORIA().equalsIgnoreCase("3")){
 %>
 <jsp:include page="head_3.jsp" flush="true"></jsp:include>
+    <%    
+    } else if (user.getCATEGORIA().equalsIgnoreCase("21")){
+%>
+<jsp:include page="head_4.jsp" flush="true"></jsp:include>
 <%
         }else{
 
 %>
-<jsp:include page="head_4.jsp" flush="true"></jsp:include>
+<jsp:include page="head_5.jsp" flush="true"></jsp:include>
 <%
 
 }

@@ -36,7 +36,7 @@ public class Controlador extends HttpServlet {
 //                System.err.println("user"+p.getId_login());
 
 
-//                boolean A = modelo.Usuario.agregar_Bitacora(p.getId_login());
+                boolean A = modelo.Usuario.agregar_Bitacora(p.getId_login());
 
                 request.getSession().setAttribute("usuario", p.getId_login());
 //                

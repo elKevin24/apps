@@ -89,6 +89,8 @@ public class Invetario_Conte {
                     }
                 }
                 st.close();
+             con.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("" + e);
@@ -115,6 +117,8 @@ public class Invetario_Conte {
                     }
                 }
                 st.close();
+             con.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("" + e);
@@ -177,6 +181,8 @@ public class Invetario_Conte {
                     }
                 }
                 st.close();
+             con.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -227,6 +233,8 @@ public class Invetario_Conte {
                     }
                 }
                 st.close();
+             con.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -269,6 +277,8 @@ public class Invetario_Conte {
                     }
                 }
                 st.close();
+             con.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -315,6 +325,8 @@ public class Invetario_Conte {
                     }
                 }
                 st.close();
+             con.close();
+             con.close();
             }
         } catch (SQLException e) {
 

@@ -133,6 +133,7 @@ public class Factura {
                         }
                     }
                     st.close();
+             con.close();
                 }
             } catch (SQLException e) {
 
@@ -161,6 +162,7 @@ public class Factura {
 
                 agregado = "bien";
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -189,6 +191,7 @@ public class Factura {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -216,6 +219,7 @@ public class Factura {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -249,6 +253,7 @@ public class Factura {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
         }
@@ -282,6 +287,7 @@ public class Factura {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("" + e);

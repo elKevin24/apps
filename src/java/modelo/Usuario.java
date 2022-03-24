@@ -55,6 +55,7 @@ public class Usuario {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -93,6 +94,7 @@ public class Usuario {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
         }
@@ -118,6 +120,7 @@ public class Usuario {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
         }
@@ -146,6 +149,7 @@ public class Usuario {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
         }
@@ -169,6 +173,7 @@ public class Usuario {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -193,6 +198,7 @@ public class Usuario {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -220,6 +226,7 @@ public class Usuario {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -268,6 +275,7 @@ public class Usuario {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("Solicitudes_Usuario" + e);
@@ -317,6 +325,7 @@ public class Usuario {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("Solicitudes_Usuario"+e);
@@ -372,6 +381,7 @@ public class Usuario {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
         }

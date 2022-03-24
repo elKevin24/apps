@@ -71,6 +71,7 @@ public class Carta {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -109,6 +110,7 @@ public class Carta {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -148,6 +150,7 @@ public class Carta {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("consulta creados: " + e);
@@ -188,6 +191,7 @@ public class Carta {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
         }
@@ -225,6 +229,7 @@ public class Carta {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
         }
@@ -253,6 +258,7 @@ public class Carta {
                 st.execute(sql);
                 actualizado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -282,6 +288,7 @@ public class Carta {
                 st.execute(sql);
                 actualizado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -309,6 +316,7 @@ public class Carta {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -397,6 +405,7 @@ public class Carta {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("consulta detalle" + e);
@@ -436,6 +445,7 @@ public class Carta {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
         }

@@ -158,14 +158,8 @@
                                 var api = this.api();
 
                                 // Output the data for the visible rows to the browser's console
-//                                console.log(api.columns({page: 'current'}).data());
-                                var lista_conte = api.columns({page: 'current'}).data().eq(0).sort()       // Sort data alphabetically
-                                        .unique();
-//                                table_filtered = this.rows({page: 'current'})
-//
-//                               console.log(lista_conte);
-//                                array();
-//                                array_atc();
+
+                                var lista_conte = api.columns({page: 'current'}).data().eq(0).sort().unique();
 
                                 for (let i = 0; i < lista_conte.length; i++) {
 

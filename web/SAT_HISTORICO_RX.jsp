@@ -64,18 +64,15 @@
             </div> 
         </div>
 
-        <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script><!--
-
-        <script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        -->        <script src="datatables_export/jquery-3.5.1.js" type="text/javascript"></script>
-        <script src="datatables_export/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="datatables_export/dataTables.buttons.min.js" type="text/javascript"></script>
-        <script src="datatables_export/jszip.min.js" type="text/javascript"></script>
-        <script src="datatables_export/pdfmake.min.js" type="text/javascript"></script>
-        <script src="datatables_export/vfs_fonts.js" type="text/javascript"></script>
-        <script src="datatables_export/buttons.html5.min.js" type="text/javascript"></script><!--
-
-        -->        <script>
+        <!--<script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>-->
+        <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        
+        
+        
+        <script>
 
             $("#buscar").click(function () {
                 if ($('#Inicio').val().length == 0 || $('#Final').val().length == 0) {

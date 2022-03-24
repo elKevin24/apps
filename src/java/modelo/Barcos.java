@@ -49,6 +49,8 @@ public static LinkedList<BeanBarcos> consultarBarco(String entrada) throws SQLEx
                         usuarios.add(user);                                 
                     }  }
              st.close();
+             con.close();
+             con.close();
          }                    
       }                        
      catch (SQLException e)
@@ -99,6 +101,7 @@ public static LinkedList<BeanBarcos> consultarBarcoFind(String entrada, String N
                         usuarios.add(user);                                 
                     }  }
              st.close();
+             con.close();
          }                    
       }                        
      catch (SQLException e)
@@ -137,6 +140,7 @@ public static LinkedList<BeanBarcos> consultarBarco() throws SQLException
                         usuarios.add(user);                                 
                     }  }
              st.close();
+             con.close();
          }                    
       }                        
      catch (SQLException e)
@@ -180,6 +184,7 @@ public static BeanBarcos ObtenerBarcos(String id)
             }
         }
             st.close();
+             con.close();
         }
       }
      catch(SQLException e)
@@ -217,6 +222,7 @@ public static LinkedList<BeanBarcos> consultarBarcoSL(String entrada) throws SQL
                         usuarios.add(user);                                 
                     }  }
              st.close();
+             con.close();
          }                    
       }                        
      catch (SQLException e)

@@ -38,6 +38,7 @@ public class detalle_carta {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -79,6 +80,7 @@ public class detalle_carta {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("" + e);
@@ -105,6 +107,7 @@ public class detalle_carta {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
         }

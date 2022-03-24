@@ -14,7 +14,7 @@ public class TrazabilidadContenedores {
         LinkedList<Trazabilidad_Contenedores> usuarios = new LinkedList<>();
         String sql = "select  tc.tcf_prefijo||tc.tcf_identificacion as cont, \n"
                 + "NVL(TO_CHAR(tc.tcf_descarga_fecha, 'DD-MM-YYYY'), '0') fecha_descarga,\n"
-                + "NVL(TO_CHAR(puerto.f_busca_escaneo_rx(tc.tcf_prefijo||tc.tcf_identificacion,TRUNC(TC.TCF_DESCARGA_FECHA)-2,'I'), 'DD-MM-YYYY'), '0') escaneo,\n"
+                + "NVL(TO_CHAR(puerto.f_busca_escaneo_rx(tc.tcf_prefijo||tc.tcf_identificacion,TRUNC(TC.TCF_DESCARGA_FECHA)-2,'I'), 'DD-MM-YYYY HH24:MI'), '0') escaneo,\n"
                 + "puerto.F_BUSCA_PESO_BASCULA(tc.tcf_correlativo_tarjeta, NULL, TC.TCF_DESPACHO ) bascula,\n"
                 + "NVL(TO_CHAR(TC.TCF_DESPACHO_FECHA, 'DD-MM-YYYY'), '0') salida_recinto,\n"
                 + "DECODE(TC.TCF_DESPACHO_FECHA,NULL,puerto.F_UBICACION_ACTUAL_CONTE(tc.tcf_correlativo_tarjeta),'NO') ubicacion_contenedor\n"
@@ -47,6 +47,7 @@ public class TrazabilidadContenedores {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -98,6 +99,7 @@ public class TrazabilidadContenedores {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -152,6 +154,7 @@ public class TrazabilidadContenedores {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -200,6 +203,7 @@ public class TrazabilidadContenedores {
 
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("ManifiestoImport: " + e);
@@ -245,6 +249,7 @@ public class TrazabilidadContenedores {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("ManifiestoExport: " + e);

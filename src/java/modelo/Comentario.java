@@ -39,6 +39,7 @@ public class Comentario {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -82,6 +83,7 @@ public class Comentario {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
         }

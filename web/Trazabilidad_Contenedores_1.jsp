@@ -55,6 +55,7 @@
                         <th>UBICACION PATIO DAT</th>
                         <th>PESAJE BASCULA</th>
                         <th>SALIDA DAT</th>
+                        <th>SALIDA DAT</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,7 +73,7 @@
 
                         String json = new Gson().toJson(lista);
                     %>  
-                    
+
                 </tbody>                
             </table>
         </div>
@@ -98,19 +99,35 @@
                     {name: "C3", data: "C3"},
                     {name: "C4", data: "C4"},
                     {name: "C5", data: "C5"},
+                    {name: "C5", data: "C5"},
                     {name: "C6", data: "C6"}
 
 
                 ],
 
-                data: <%= json%>
+                data: <%= json%>,
+                "drawCallback": function (settings) {
+                    var api = this.api();
+
+                    table_filtered = api.rows({page: 'current'});
+
+//            console.log({data: table_filtered.data()});
+
+                    var data = table_filtered.data().toArray();
+
+                    data.forEach(function (dat, index) {
+                        console.log("No " + index + "Dato" + dat.C5);
+                        if (dat.C5 == "0") {
+                            console.log("soy cero");
+                        }
+                    });
+
+                }
 
                 //}
             });
 
-            table_filtered=table.rows({page:'current'})
- 
-console.log({data: table_filtered.data()});
+
 
         });
 

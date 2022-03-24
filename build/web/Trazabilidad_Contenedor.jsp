@@ -70,22 +70,22 @@
 
                         try {
                             JSONObject jsonObject = retenciones.getJSONObject(i);
-                            //System.err.println("Lista" + jsonObject);
+                            System.err.println("Lista" + jsonObject);
                             //cambiar if analisis
 
                             if (jsonObject.has("entidadRetiene") && jsonObject.has("estado")) {
 
                                 String entidad = jsonObject.getString("entidadRetiene");
                                 String estado = jsonObject.getString("estado");
-
-                                if ("R".equals(estado) && "DIPA".equals(entidad)) {
+                                System.err.println("entidad" + entidad +"estado"+ estado);
+                                if ("R".equals(estado) && "DIPAFRONT".equals(entidad)) {
                                     String fecha = jsonObject.getString("fechaRetencion");
 
 
         %>
         <script>
 
-            consultaDictamenManifiesto(" ");
+//            consultaDictamenManifiesto(" ");
             $(document).ready(function () {
                 cambiar("<%=entidad%>", "<%=fecha%>");
 
@@ -214,7 +214,7 @@
                             <tr>
                                 <td id="mensaje"> <%= mensaje%></td>
                                 <td id="MAGA"><img src="img/Bullet-grey.png"></td>
-                                <td id="DIPA"><img src="img/Bullet-grey.png"></td>
+                                <td id="DIPAFRONT"><img src="img/Bullet-grey.png"></td>
                                 <td id="SEPA"><img src="img/Bullet-grey.png"></td>
                                 <td id="SGAIA"><img src="img/Bullet-grey.png"></td>
                             </tr>
@@ -318,7 +318,7 @@
                 }
             }
 
-            
+
 
 
 

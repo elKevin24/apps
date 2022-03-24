@@ -46,6 +46,7 @@ public class TrazabilidadBarcos {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -90,6 +91,7 @@ public class TrazabilidadBarcos {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -136,6 +138,7 @@ public class TrazabilidadBarcos {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -184,6 +187,7 @@ public class TrazabilidadBarcos {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             
@@ -215,6 +219,7 @@ public class TrazabilidadBarcos {
 //                    }
 //                }
 //                st.close();
+//             con.close();
 //            }
 //        } catch (SQLException e) {
 //        }
@@ -250,6 +255,7 @@ public class TrazabilidadBarcos {
 //                    }
 //                }
 //                st.close();
+//             con.close();
 //            }
 //        } catch (SQLException e) {
 //        }

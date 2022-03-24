@@ -54,6 +54,7 @@ public class SAT {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -96,6 +97,7 @@ public class SAT {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             error = "RX_RESULTADO_ESCANEO_CONTE: _" + e;
@@ -140,6 +142,7 @@ public class SAT {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             error = "RX_RESULTADO_ESCANEO_CONTE: _" + e + " Inicio: " + Inicio + " Final: " + Final;
@@ -182,6 +185,7 @@ public class SAT {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -241,6 +245,7 @@ public class SAT {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -291,6 +296,7 @@ public class SAT {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -343,6 +349,7 @@ public class SAT {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 

@@ -37,6 +37,7 @@ public class CartaBarcos {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -66,6 +67,7 @@ public class CartaBarcos {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("ConsultarLista" + e);

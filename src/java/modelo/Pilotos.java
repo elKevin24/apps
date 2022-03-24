@@ -40,6 +40,7 @@ public class Pilotos {
 
                 agregado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -77,6 +78,7 @@ public class Pilotos {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
             System.err.println("ConsultarLista" + e);
@@ -106,6 +108,7 @@ public class Pilotos {
                 st.execute(sql);
                 actualizado = true;
                 st.close();
+             con.close();
             }
 
         } catch (SQLException e) {
@@ -133,6 +136,7 @@ public class Pilotos {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -174,6 +178,7 @@ public class Pilotos {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -210,6 +215,7 @@ public class Pilotos {
                 }
             }
             st.close();
+             con.close();
 
             con.close();
 
@@ -254,6 +260,7 @@ public class Pilotos {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 

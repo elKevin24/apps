@@ -115,6 +115,7 @@ public class Estadistica {
                     }
                 }
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -171,6 +172,7 @@ public class Estadistica {
                 }
 
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -227,6 +229,7 @@ public class Estadistica {
                 }
 
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -306,6 +309,7 @@ public class Estadistica {
                 }
 
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 
@@ -352,6 +356,7 @@ public class Estadistica {
                 }
 
                 st.close();
+             con.close();
             }
         } catch (SQLException e) {
 

@@ -24,7 +24,7 @@ public class Controlador extends HttpServlet {
             String usuario = request.getParameter("usuario");
             String clave = request.getParameter("clave");
             HttpSession session = request.getSession(true);
-            session.setMaxInactiveInterval(30 * 60);
+//            session.setMaxInactiveInterval(30 * 60);
 
             p.setUsuario(usuario);
             p.setClave(clave);
@@ -47,6 +47,8 @@ public class Controlador extends HttpServlet {
 //                response.sendRedirect("menu.jsp");
                 } else {
                     response.sendRedirect("menu.jsp");
+                    System.out.println("Ingreso Apps");
+                    
                 }
 
             } else {
